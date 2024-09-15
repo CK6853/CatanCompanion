@@ -1,0 +1,5 @@
+
+
+Functionality to remove singular names from the list
+    Display as table? with a remove button on each row
+
