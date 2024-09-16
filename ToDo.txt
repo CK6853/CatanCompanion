@@ -1,7 +1,6 @@
 
 
 Ability to upgrade settlement to city
-Label as "Settlement"/"City" rather than amount
 
 Dice interface for main page
 7 functionality - ability to disable settlements on Robber placement

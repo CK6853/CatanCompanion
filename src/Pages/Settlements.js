@@ -24,7 +24,7 @@ export default function Settlements(props) {
 
 // Block to display all current settlements for possible removal
 function SettlementEditBlock(props) {
-  
+
   // Remove a specific settlement
   function removeSettlement(removeIndex) {
     // Use an array filter to set settlements state without modifying the state itself
@@ -46,7 +46,7 @@ function SettlementEditBlock(props) {
           <th>Roll</th>
           <th>Player</th>
           <th>Resource</th>
-          <th>Amount</th>
+          <th>Type</th>
           <th>Enabled</th>
           <th>Remove</th>
         </tr>
@@ -56,7 +56,7 @@ function SettlementEditBlock(props) {
             <td>{settlement.roll}</td>
             <td>{settlement.player}</td>
             <td>{settlement.resource}</td>
-            <td>{settlement.amount}</td>
+            <td>{settlement.type}</td>
             <td>{settlement.enabled ? "☑" : "☐"}</td>
             {/*Dynamically create remove buttons*/}
             <td><button className="RemoveButton" onClick={() => removeSettlement(index)}>Remove</button></td>
@@ -78,20 +78,20 @@ function SettlementInputBlock(props) {
   const [currentRoll, setCurrentRoll] = useState(1)
   const [currentPlayer, setCurrentPlayer] = useState(props.players[0])
   const [currentResource, setCurrentResource] = useState("Gold")
-  const [currentAmount, setCurrentAmount] = useState(1)
+  const [currentType, setCurrentType] = useState("Settlement")
   const [currentEnabled, setCurrentEnabled] = useState(true)
 
   // Use form to add a settlement to the array passed from App and clear the forms
-  function addToSettlements(roll, player, resource, amount, enabled) {
+  function addToSettlements(roll, player, resource, type, enabled) {
     // Avoid adding from empty fields (though this shouldn't be possible in normal use)
-    if(!roll || !player || !resource || !amount) return
+    if(!roll || !player || !resource || !type) return
 
     // Update the list
     let newSettlement = {
       roll: roll,
       player: player,
       resource:resource,
-      amount:amount,
+      type:type,
       enabled:enabled
     }
     props.setSettlements([...props.settlements, newSettlement])
@@ -106,7 +106,7 @@ function SettlementInputBlock(props) {
           <th>Roll</th>
           <th>Player</th>
           <th>Resource</th>
-          <th>Amount</th>
+          <th>Type</th>
           <th>Enabled</th>
           <th>Submit</th>
         </tr>
@@ -125,7 +125,7 @@ function SettlementInputBlock(props) {
           </td>
           <td>
             {/*Amount*/}
-            <ReactSelect options={[1,2]} updateValue={setCurrentAmount} />
+            <ReactSelect options={["Settlement", "City"]} updateValue={setCurrentType} />
           </td>
           <td>
             {/*Enabled*/} 
@@ -133,7 +133,7 @@ function SettlementInputBlock(props) {
           </td>
           <td>
             {/*Manual submit button*/}
-            <button className="SubmitButton" onClick={() => {addToSettlements(currentRoll, currentPlayer, currentResource, currentAmount, currentEnabled)}}>Add</button>
+            <button className="SubmitButton" onClick={() => {addToSettlements(currentRoll, currentPlayer, currentResource, currentType, currentEnabled)}}>Add</button>
           </td>
         </tr>
       </table>
