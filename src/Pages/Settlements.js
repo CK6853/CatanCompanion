@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const allowableRolls = [1,2,3,4,5,6, 8,9,10,11,12]
+const resourceList = ["Gold", "Wood", "Stone", "Bricks", "Sheep", "Hay"]
 
 //Settlements Page
 export default function Settlements(props) {
@@ -16,7 +19,7 @@ export default function Settlements(props) {
           <SettlementInputBlock settlements={props.settlements} setSettlements={props.setSettlements} players={props.players} />
         </div>
         {/*Only render edit block if data exists*/}
-        {props.settlements.length === 0 ? (null) : (<SettlementEditBlock settlements={props.settlements} setSettlements={props.setSettlements} />)}
+        {props.settlements.length === 0 ? (null) : (<SettlementEditBlock settlements={props.settlements} setSettlements={props.setSettlements} players={props.players} />)}
       </div>
     </div>
   )
@@ -24,6 +27,15 @@ export default function Settlements(props) {
 
 // Block to display all current settlements for possible removal
 function SettlementEditBlock(props) {
+  const [rollFilter, setRollFilter] = useState("Roll Filter")
+  const [playerFilter, setPlayerFilter] = useState("Player Filter")
+  const [resourceFilter, setResourceFilter] = useState("Resource Filter")
+  const [filteredSettlements, setFilteredSettlements] = useState(props.settlements)
+
+  // When filters or the data are updated, update the filtered data
+  useEffect(() => {
+    setFilteredSettlements(filterSettlements(props.settlements, rollFilter, playerFilter, resourceFilter))
+  }, [rollFilter, playerFilter, resourceFilter, props.settlements])
 
   // Remove a specific settlement
   function removeSettlement(removeIndex) {
@@ -63,9 +75,17 @@ function SettlementEditBlock(props) {
             <th>Remove</th>
           </tr>
         </thead>
-        {/*Data rows*/}
         <tbody>
-          {props.settlements.map((settlement, index) => (
+          {/*Filters*/}
+          <tr>
+            <td><ReactSelect options={["Roll Filter", ...allowableRolls]} updateValue={setRollFilter}/></td>
+            <td><ReactSelect options={["Player Filter", ...props.players]} updateValue={setPlayerFilter}/></td>
+            <td><ReactSelect options={["Resource Filter", ...resourceList]} updateValue={setResourceFilter}/></td>
+          </tr>
+          {/*Data rows - filtered*/}
+          {/*Check for over-filter - have error after table to preserve formatting*/}
+          {filteredSettlements.length === 0 ? null :
+          filteredSettlements.map((settlement, index) => (
             <tr>
               <td>{settlement.roll}</td>
               <td>{settlement.player}</td>
@@ -81,12 +101,43 @@ function SettlementEditBlock(props) {
         </tbody>
       </table>
 
+      {/*Display error if over-filtered*/}
+      {filteredSettlements.length === 0 ? <p>No settlements match your filters</p> : null}
+
       {/*Button to clear all settlements - only render if more than one settlement*/}
       {props.settlements.length < 2 ? (null) : (
         <button className="ClearButton" onClick={() => clearSettlements()}>Clear All Settlements</button>
       )}
     </div>
   )
+}
+
+// Get a filtered list of settlements based on given filters
+function filterSettlements(settlementArray, rollFilter, playerFilter, resourceFilter) {
+  // Don't mutate state directly - arrays are just pointers
+  let shallowCopy = [...settlementArray]
+
+  // Check if default (unfiltered) state
+  if (rollFilter !== "Roll Filter") {
+    // If not, apply filter
+    shallowCopy = shallowCopy.filter((settlement) => {
+      return settlement.roll === rollFilter
+    })
+  }
+
+  if (playerFilter !== "Player Filter") {
+    shallowCopy = shallowCopy.filter((settlement) => {
+      return settlement.player === playerFilter
+    })
+  }
+
+  if (resourceFilter !== "Resource Filter") {
+    shallowCopy = shallowCopy.filter((settlement) => {
+      return settlement.resource === resourceFilter
+    })
+  }
+
+  return shallowCopy
 }
 
 // Form layout for adding a new settlement
@@ -114,6 +165,7 @@ function SettlementInputBlock(props) {
     props.setSettlements([...props.settlements, newSettlement])
   }
 
+  // Check if there are enough players to run a game before rendering - also prevents player dropdown showing as empty
   if (props.players.length < 2) return (
     <h1 className="ErrorMessage">Not enough players - return home and go to "Players" to set some up</h1>
   )
@@ -137,7 +189,7 @@ function SettlementInputBlock(props) {
           <tr>
             <td>
               {/*Roll*/}
-              <ReactSelect options={[1,2,3,4,5,6, 8,9,10,11,12]} updateValue={setCurrentRoll} />
+              <ReactSelect options={allowableRolls} updateValue={setCurrentRoll} />
             </td>
             <td>
               {/*Player*/}
@@ -145,7 +197,7 @@ function SettlementInputBlock(props) {
             </td>
             <td>
               {/*Resource*/}
-              <ReactSelect options={["Gold", "Wood", "Stone", "Bricks", "Sheep", "Hay"]} updateValue={setCurrentResource} />
+              <ReactSelect options={resourceList} updateValue={setCurrentResource} />
             </td>
             <td>
               {/*Amount*/}
