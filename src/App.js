@@ -9,33 +9,9 @@ function App() {
   // Could use routes, but this is a toy application so can't be bothered
   const [currentPageState, setCurrentPageState] = useState("Home")
 
-  // Set up state for player array
-  const [playerArray, setPlayerArray] = useState(() => {
-    // Check localStorage to see if this is already initialised
-    const saved = localStorage.getItem("playerArray");
-    const initialValue = JSON.parse(saved);
-
-    // If it already exists, use that. Otherwise, default to empty array
-    if (initialValue) {
-      return initialValue
-    } else {
-      return []
-    }
-  });
-
-  // Set up state for settlements array
-  const [settlementArray, setSettlementArray] = useState(() => {
-    // Check localStorage to see if this is already initialised
-    const saved = localStorage.getItem("settlementArray");
-    const initialValue = JSON.parse(saved);
-
-    // If it already exists, use that. Otherwise, default to empty array
-    if (initialValue) {
-      return initialValue
-    } else {
-      return []
-    }
-  });
+  // Set up state for player and settlement arrays - default to empty arrays if not found in localStorage
+  const [playerArray, setPlayerArray] = useState(getLocalStorage("playerArray"));
+  const [settlementArray, setSettlementArray] = useState(getLocalStorage("settlementArray"));
 
   // Set up Effect to save player array to localStorage whenever it is updated
   useEffect(() => {
@@ -67,3 +43,16 @@ function App() {
 }
 
 export default App;
+
+function getLocalStorage(getKey) {
+    // Check localStorage to see if this is already initialised
+    const saved = localStorage.getItem(getKey);
+    const initialValue = JSON.parse(saved);
+
+    // If it already exists, use that. Otherwise, default to empty array
+    if (initialValue) {
+      return initialValue
+    } else {
+      return []
+    }
+}
