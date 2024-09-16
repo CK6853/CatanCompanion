@@ -22,7 +22,7 @@ export default function Players(props) {
       props.setPlayers(props.players.filter((player) => player !== playerName))
     }
   
-    // Clear the players from App
+    // Clear the players
     function clearPlayers() {
       props.setPlayers([])
     }
