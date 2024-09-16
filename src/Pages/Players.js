@@ -9,7 +9,7 @@ export default function Players(props) {
     // Use form to add a player to the array passed from App and clear the form
     function addToPlayers(playerName) {
       // Avoid adding from an empty field
-      if (!playerName) return;
+      if (!playerName) return
       // Update the list
       props.setPlayers([...props.players, playerName])
       // Reset the field
