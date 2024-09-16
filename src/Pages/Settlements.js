@@ -36,6 +36,16 @@ function SettlementEditBlock(props) {
     props.setSettlements([])
   }
 
+  // Up/downgrade a settlement
+  function toggleSettlementType(upgradeIndex) {
+    // Make a shallow copy to avoid mutating the state directly
+    let tempSettlements = [...props.settlements]
+    // Change the one we want to change
+    tempSettlements[upgradeIndex].type = tempSettlements[upgradeIndex].type === "Settlement" ? "City" : "Settlement"
+    // Set the state to the new state
+    props.setSettlements(tempSettlements)
+  }
+
   return (
     <div className="EditBlock">
       <h1>Existing</h1>
@@ -48,6 +58,7 @@ function SettlementEditBlock(props) {
           <th>Resource</th>
           <th>Type</th>
           <th>Enabled</th>
+          <th>Switch Type</th>
           <th>Remove</th>
         </tr>
         {/*Data rows*/}
@@ -58,6 +69,8 @@ function SettlementEditBlock(props) {
             <td>{settlement.resource}</td>
             <td>{settlement.type}</td>
             <td>{settlement.enabled ? "☑" : "☐"}</td>
+            {/*Dynamically create buttons to switch type*/}
+            <td><button className="TypeButton" onClick={() => toggleSettlementType(index)}>Switch</button></td>
             {/*Dynamically create remove buttons*/}
             <td><button className="RemoveButton" onClick={() => removeSettlement(index)}>Remove</button></td>
           </tr>

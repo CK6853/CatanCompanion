@@ -1,6 +1,5 @@
 
 
-Ability to upgrade settlement to city
 
 Ability to filter settlement list by roll
 
