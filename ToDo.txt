@@ -1,10 +1,5 @@
 
-Settlements data structure
-    Player
-    Resource
-    Amount
-    Enabled
-Page for adding/removing/clearing settlements
+Refactor a heap of components
 
 Dice interface for main page
 7 functionality - ability to disable settlements on Robber placement
