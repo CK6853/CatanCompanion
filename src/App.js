@@ -49,7 +49,7 @@ function App() {
 
   // Function for pages to return home
   function returnHome() {
-    setCurrentPageState("Home)")
+    setCurrentPageState("Home")
   }
 
   // Figure out which page to render
