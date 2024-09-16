@@ -51,20 +51,24 @@ export default function Players(props) {
             {/*Manual button click*/}
             <button className="SubmitButton" onClick={() => {addToPlayers(currentEntry)}}>Add</button>
           </div>
-          <div className="EditBlock">
-            {/*Table of all players, to allow removals*/}
-            <table className="PlayersTable">
-              {props.players.map((player) => (
-                <tr>
-                  <td>{player}</td>
-                  {/*Dynamically create remove buttons*/}
-                  <td><button className="RemoveButton" onClick={() => removePlayer(player)}>Remove</button></td>
-                </tr>
-              ))}
-            </table>
-            {/*Button to clear players*/}
-            <button className="ClearButton" onClick={() => clearPlayers()}>Clear All Players</button>
-          </div>
+          {/*Block to display all current players for possible removal - only render if data exists*/}
+          {props.players.length === 0 ? (null) : (
+            <div className="EditBlock">
+              <table className="PlayersTable">
+                {props.players.map((player) => (
+                  <tr>
+                    <td>{player}</td>
+                    {/*Dynamically create remove buttons*/}
+                    <td><button className="RemoveButton" onClick={() => removePlayer(player)}>Remove</button></td>
+                  </tr>
+                ))}
+              </table>
+              {/*Button to clear all players - only render if more than one player*/}
+              {props.players.length < 2 ? (null) : (
+                <button className="ClearButton" onClick={() => clearPlayers()}>Clear All Players</button>
+              )}
+            </div>
+          )}
         </div>
       </div>
     )
