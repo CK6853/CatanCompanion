@@ -14,7 +14,26 @@ export default function Home(props) {
         
         {/*TEMP - FOR TESTING*/}
         <h1>List of settlements</h1>
-        {props.settlements.map((settlement) => (<p>{settlement}</p>))}
+        <table className="settlementsTable">
+              {/*Header row*/}
+              <tr>
+                <th>Roll</th>
+                <th>Player</th>
+                <th>Resource</th>
+                <th>Amount</th>
+                <th>Enabled</th>
+              </tr>
+              {/*Data rows*/}
+              {props.settlements.map((settlement, index) => (
+                <tr>
+                  <td>{settlement.roll}</td>
+                  <td>{settlement.player}</td>
+                  <td>{settlement.resource}</td>
+                  <td>{settlement.amount}</td>
+                  <td>{settlement.enabled ? "☑" : "☐"}</td>
+                </tr>
+              ))}
+            </table>
       </div>
     )
   }
