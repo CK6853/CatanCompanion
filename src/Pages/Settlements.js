@@ -35,6 +35,9 @@ function SettlementEditBlock(props) {
   // When filters or the data are updated, update the filtered data
   useEffect(() => {
     setFilteredSettlements(filterSettlements(props.settlements, rollFilter, playerFilter, resourceFilter))
+    console.log(props.settlements)
+    console.log(rollFilter)
+    console.log(filterSettlements(props.settlements, rollFilter, playerFilter, resourceFilter))
   }, [rollFilter, playerFilter, resourceFilter, props.settlements])
 
   // Remove a specific settlement
