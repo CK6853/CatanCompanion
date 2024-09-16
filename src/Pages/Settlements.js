@@ -13,7 +13,7 @@ export default function Settlements(props) {
       <div className="Body">
         <div className="InputBlock">
           {/*Input fields to enter a new settlement to add to the list*/}
-          <NewSettlementInput settlements={props.settlements} setSettlements={props.setSettlements} players={props.players} />
+          <SettlementInputBlock settlements={props.settlements} setSettlements={props.setSettlements} players={props.players} />
         </div>
         {/*Only render edit block if data exists*/}
         {props.settlements.length === 0 ? (null) : (<SettlementEditBlock settlements={props.settlements} setSettlements={props.setSettlements} />)}
@@ -24,7 +24,7 @@ export default function Settlements(props) {
 
 // Block to display all current settlements for possible removal
 function SettlementEditBlock(props) {
-
+  
   // Remove a specific settlement
   function removeSettlement(removeIndex) {
     // Use an array filter to set settlements state without modifying the state itself
@@ -73,7 +73,7 @@ function SettlementEditBlock(props) {
 }
 
 // Form layout for adding a new settlement
-function NewSettlementInput(props) {
+function SettlementInputBlock(props) {
   //create some states for fields to use
   const [currentRoll, setCurrentRoll] = useState(1)
   const [currentPlayer, setCurrentPlayer] = useState(props.players[0])
