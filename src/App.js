@@ -57,10 +57,19 @@ function Players(props) {
 
   // Functions for buttons to call
   // Use form to add a player to the array passed from App and clear the form
-  function addToPlayers(addPlayer) {
-    if (!addPlayer) return;
-    props.setPlayers([...props.players, addPlayer])
+  function addToPlayers(playerName) {
+    // Avoid adding from an empty field
+    if (!playerName) return;
+    // Update the list
+    props.setPlayers([...props.players, playerName])
+    // Reset the field
     setCurrentEntry("")
+  }
+
+  // Remove a specific player
+  function removePlayer(playerName) {
+    // Use an array filter to set players state without modifying the state itself
+    props.setPlayers(props.players.filter((player) => player !== playerName))
   }
 
   // Clear the players from App
@@ -78,7 +87,7 @@ function Players(props) {
         <div className="PlayerInputBlock">
           {/*Input field to enter a new player to add to the list*/}
           <input
-            className="PlayerInput"
+            className="PlayersInput"
             type="text"
             /*Use the state set above to hold value*/
             value={currentEntry}
@@ -89,17 +98,22 @@ function Players(props) {
             placeholder="Enter Player Name"
           />
           {/*Manual button click*/}
-          <button className="PlayerSubmit" onClick={() => {addToPlayers(currentEntry)}}>Add</button>
+          <button className="PlayersInputSubmitButton" onClick={() => {addToPlayers(currentEntry)}}>Add</button>
         </div>
-      <div/>
-
-      {/*Button to clear players*/}
-      <button className="PlayerClear" onClick={() => clearPlayers()}>Clear Players</button>
-      <div/>
+        <div className="PlayersEditBlock">
+          {/*Table of all players, to allow removals*/}
+          <table className="PlayersTable">
+            {props.players.map((player) => (
+              <tr>
+                <td>{player}</td>
+                <td><button className="PlayersRemoveButton" onClick={() => removePlayer(player)}>Remove</button></td>
+              </tr>
+            ))}
+          </table>
+          {/*Button to clear players*/}
+          <button className="PlayersClearButton" onClick={() => clearPlayers()}>Clear All Players</button>
+        </div>
       </div>
-      
-      {props.players.map((player) => (<p>{player}</p>))}
-      
     </div>
   )
 }
