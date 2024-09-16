@@ -6,7 +6,7 @@ import Settlements from "./Pages/Settlements.js"
 
 function App() {
   // Set up state for active page
-  // Could use routes, but this is a toy application so cbf
+  // Could use routes, but this is a toy application so can't be bothered
   const [currentPageState, setCurrentPageState] = useState("Home")
 
   // Set up state for player array
