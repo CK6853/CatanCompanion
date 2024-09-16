@@ -1,18 +1,155 @@
-//import { useState } from "react";
+import { useState } from "react";
 
 //Settlements Page
 export default function Settlements(props) {
 
-    return (
-      <div className="Settlements">
-        {/*Nav to return home*/}
-        <div className="NavBar">
-          <button className="NavButton" onClick={() => props.returnHome()}>Return Home</button>
-        </div>
-        <h1>Settlements</h1>
-        <div className="Body">
-
-        </div>
+  return (
+    <div className="Settlements">
+      {/*Nav to return home*/}
+      <div className="NavBar">
+        <button className="NavButton" onClick={() => props.returnHome()}>Return Home</button>
       </div>
-    )
+      <h1>Settlements</h1>
+      <div className="Body">
+        <div className="InputBlock">
+          {/*Input fields to enter a new settlement to add to the list*/}
+          <NewSettlementInput settlements={props.settlements} setSettlements={props.setSettlements} players={props.players} />
+        </div>
+        {/*Only render edit block if data exists*/}
+        {props.settlements.length === 0 ? (null) : (<SettlementEditBlock settlements={props.settlements} setSettlements={props.setSettlements} />)}
+      </div>
+    </div>
+  )
+}
+
+// Block to display all current settlements for possible removal
+function SettlementEditBlock(props) {
+
+  // Remove a specific settlement
+  function removeSettlement(removeIndex) {
+    // Use an array filter to set settlements state without modifying the state itself
+    props.setSettlements(props.settlements.filter((_,index) => index !== removeIndex))
   }
+
+  // Clear all settlements
+  function clearSettlements() {
+    props.setSettlements([])
+  }
+
+  return (
+    <div className="EditBlock">
+      <h1>Existing</h1>
+      {/*Table of all settlements, to allow removals*/}
+      <table className="settlementsTable">
+        {/*Header row*/}
+        <tr>
+          <th>Roll</th>
+          <th>Player</th>
+          <th>Resource</th>
+          <th>Amount</th>
+          <th>Enabled</th>
+          <th>Remove</th>
+        </tr>
+        {/*Data rows*/}
+        {props.settlements.map((settlement, index) => (
+          <tr>
+            <td>{settlement.roll}</td>
+            <td>{settlement.player}</td>
+            <td>{settlement.resource}</td>
+            <td>{settlement.amount}</td>
+            <td>{settlement.enabled ? "☑" : "☐"}</td>
+            {/*Dynamically create remove buttons*/}
+            <td><button className="RemoveButton" onClick={() => removeSettlement(index)}>Remove</button></td>
+          </tr>
+        ))}
+      </table>
+
+      {/*Button to clear all settlements - only render if more than one settlement*/}
+      {props.settlements.length < 2 ? (null) : (
+        <button className="ClearButton" onClick={() => clearSettlements()}>Clear All Settlements</button>
+      )}
+    </div>
+  )
+}
+
+// Form layout for adding a new settlement
+function NewSettlementInput(props) {
+  //create some states for fields to use
+  const [currentRoll, setCurrentRoll] = useState(1)
+  const [currentPlayer, setCurrentPlayer] = useState(props.players[0])
+  const [currentResource, setCurrentResource] = useState("Gold")
+  const [currentAmount, setCurrentAmount] = useState(1)
+  const [currentEnabled, setCurrentEnabled] = useState(true)
+
+  // Use form to add a settlement to the array passed from App and clear the forms
+  function addToSettlements(roll, player, resource, amount, enabled) {
+    // Avoid adding from empty fields (though this shouldn't be possible in normal use)
+    if(!roll || !player || !resource || !amount) return
+
+    // Update the list
+    let newSettlement = {
+      roll: roll,
+      player: player,
+      resource:resource,
+      amount:amount,
+      enabled:enabled
+    }
+    props.setSettlements([...props.settlements, newSettlement])
+  }
+
+  return (
+    <div className="InputBlock">
+      {/*Input fields to enter a new settlement to add to the list*/}
+      <h1>Add New</h1>
+      <table className="InputTable">
+        <tr>
+          <th>Roll</th>
+          <th>Player</th>
+          <th>Resource</th>
+          <th>Amount</th>
+          <th>Enabled</th>
+          <th>Submit</th>
+        </tr>
+        <tr>
+          <td>
+            {/*Roll*/}
+            <ReactSelect options={[1,2,3,4,5,6, 8,9,10,11,12]} updateValue={setCurrentRoll} />
+          </td>
+          <td>
+            {/*Player*/}
+            <ReactSelect options={props.players} updateValue={setCurrentPlayer} />
+          </td>
+          <td>
+            {/*Resource*/}
+            <ReactSelect options={["Gold", "Wood", "Stone", "Bricks", "Sheep", "Hay"]} updateValue={setCurrentResource} />
+          </td>
+          <td>
+            {/*Amount*/}
+            <ReactSelect options={[1,2]} updateValue={setCurrentAmount} />
+          </td>
+          <td>
+            {/*Enabled*/} 
+            <input type="checkbox" checked={currentEnabled} onChange={() => setCurrentEnabled(!currentEnabled)} />
+          </td>
+          <td>
+            {/*Manual submit button*/}
+            <button className="SubmitButton" onClick={() => {addToSettlements(currentRoll, currentPlayer, currentResource, currentAmount, currentEnabled)}}>Add</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  )
+}
+
+// Boilerplate to render a react-ified HTML select object
+function ReactSelect(props) {
+  return (
+    <select onChange={(event) => props.updateValue(event.target.value)}>
+      {props.options.map((option, index) => (
+        <option key={index}>
+          {option}
+        </option>
+      ))}
+    </select>
+  )
+}
