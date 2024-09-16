@@ -57,6 +57,7 @@ export default function Players(props) {
               {props.players.map((player) => (
                 <tr>
                   <td>{player}</td>
+                  {/*Dynamically create remove buttons*/}
                   <td><button className="RemoveButton" onClick={() => removePlayer(player)}>Remove</button></td>
                 </tr>
               ))}
