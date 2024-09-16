@@ -1,5 +1,12 @@
 
+Settlements data structure
+    Player
+    Resource
+    Amount
+    Enabled
+Page for adding/removing/clearing settlements
 
-Functionality to remove singular names from the list
-    Display as table? with a remove button on each row
+Dice interface for main page
+7 functionality - ability to disable settlements on Robber placement
+Popup for resource gathering
 
