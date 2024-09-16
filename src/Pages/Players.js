@@ -65,6 +65,7 @@ function PlayerEditBlock(props) {
 
   return (
     <div className="EditBlock">
+      {/*Table to display all players for possible removal*/}
       <table className="PlayersTable">
         {props.players.map((player) => (
           <tr>
