@@ -51,6 +51,8 @@ function App() {
     setCurrentPageState("Home)")
   }
 
+  // Figure out which page to render
+  // Again, could set up routes but can't be bothered for an application this small
   switch(currentPageState) {
     case "Players":
       return (<Players returnHome={returnHome} players={playerArray} setPlayers={setPlayerArray}/>)
@@ -66,14 +68,19 @@ function App() {
 // Home Page
 function Home(props) {
   return (
-    <div className="Home">
+    <div className="Body">
+      {/*Navigation Bar for alternate pages*/}
       <div className="NavBar">
+        {/*Could just copy/paste this, but might want to add more in future*/}
         {["Players", "Settlements"].map((pagePlayer) => (
+          /*Base button text and page state function on this string*/
           <button className="NavButton" onClick={() => props.setCurrentPageState(pagePlayer)}>{pagePlayer}</button>
         ))}
       </div>
+      <h1>Catan Companion</h1>
       
-      <h1>Temp_List of players</h1>
+      {/*TEMP - FOR TESTING*/}
+      <h1>List of players</h1>
       {props.players.map((player) => (<p>{player}</p>))}
     </div>
   )
