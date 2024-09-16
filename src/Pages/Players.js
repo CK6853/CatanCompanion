@@ -67,13 +67,15 @@ function PlayerEditBlock(props) {
     <div className="EditBlock">
       {/*Table to display all players for possible removal*/}
       <table className="PlayersTable">
-        {props.players.map((player) => (
-          <tr>
-            <td>{player}</td>
-            {/*Dynamically create remove buttons*/}
-            <td><button className="RemoveButton" onClick={() => removePlayer(player)}>Remove</button></td>
-          </tr>
-        ))}
+        <tbody>
+          {props.players.map((player) => (
+            <tr>
+              <td>{player}</td>
+              {/*Dynamically create remove buttons*/}
+              <td><button className="RemoveButton" onClick={() => removePlayer(player)}>Remove</button></td>
+            </tr>
+          ))}
+        </tbody>
       </table>
       {/*Button to clear all players - only render if more than one player*/}
       {props.players.length < 2 ? (null) : (

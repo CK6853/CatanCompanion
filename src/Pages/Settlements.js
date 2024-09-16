@@ -52,29 +52,33 @@ function SettlementEditBlock(props) {
       {/*Table of all settlements, to allow removals*/}
       <table className="settlementsTable">
         {/*Header row*/}
-        <tr>
-          <th>Roll</th>
-          <th>Player</th>
-          <th>Resource</th>
-          <th>Type</th>
-          <th>Enabled</th>
-          <th>Switch Type</th>
-          <th>Remove</th>
-        </tr>
-        {/*Data rows*/}
-        {props.settlements.map((settlement, index) => (
+        <thead>
           <tr>
-            <td>{settlement.roll}</td>
-            <td>{settlement.player}</td>
-            <td>{settlement.resource}</td>
-            <td>{settlement.type}</td>
-            <td>{settlement.enabled ? "☑" : "☐"}</td>
-            {/*Dynamically create buttons to switch type*/}
-            <td><button className="TypeButton" onClick={() => toggleSettlementType(index)}>Switch</button></td>
-            {/*Dynamically create remove buttons*/}
-            <td><button className="RemoveButton" onClick={() => removeSettlement(index)}>Remove</button></td>
+            <th>Roll</th>
+            <th>Player</th>
+            <th>Resource</th>
+            <th>Type</th>
+            <th>Enabled</th>
+            <th>Switch Type</th>
+            <th>Remove</th>
           </tr>
-        ))}
+        </thead>
+        {/*Data rows*/}
+        <tbody>
+          {props.settlements.map((settlement, index) => (
+            <tr>
+              <td>{settlement.roll}</td>
+              <td>{settlement.player}</td>
+              <td>{settlement.resource}</td>
+              <td>{settlement.type}</td>
+              <td>{settlement.enabled ? "☑" : "☐"}</td>
+              {/*Dynamically create buttons to switch type*/}
+              <td><button className="TypeButton" onClick={() => toggleSettlementType(index)}>Switch</button></td>
+              {/*Dynamically create remove buttons*/}
+              <td><button className="RemoveButton" onClick={() => removeSettlement(index)}>Remove</button></td>
+            </tr>
+          ))}
+        </tbody>
       </table>
 
       {/*Button to clear all settlements - only render if more than one settlement*/}
@@ -119,40 +123,44 @@ function SettlementInputBlock(props) {
       {/*Input fields to enter a new settlement to add to the list*/}
       <h1>Add New</h1>
       <table className="InputTable">
-        <tr>
-          <th>Roll</th>
-          <th>Player</th>
-          <th>Resource</th>
-          <th>Type</th>
-          <th>Enabled</th>
-          <th>Submit</th>
-        </tr>
-        <tr>
-          <td>
-            {/*Roll*/}
-            <ReactSelect options={[1,2,3,4,5,6, 8,9,10,11,12]} updateValue={setCurrentRoll} />
-          </td>
-          <td>
-            {/*Player*/}
-            <ReactSelect options={props.players} updateValue={setCurrentPlayer} />
-          </td>
-          <td>
-            {/*Resource*/}
-            <ReactSelect options={["Gold", "Wood", "Stone", "Bricks", "Sheep", "Hay"]} updateValue={setCurrentResource} />
-          </td>
-          <td>
-            {/*Amount*/}
-            <ReactSelect options={["Settlement", "City"]} updateValue={setCurrentType} />
-          </td>
-          <td>
-            {/*Enabled*/} 
-            <input type="checkbox" checked={currentEnabled} onChange={() => setCurrentEnabled(!currentEnabled)} />
-          </td>
-          <td>
-            {/*Manual submit button*/}
-            <button className="SubmitButton" onClick={() => {addToSettlements(currentRoll, currentPlayer, currentResource, currentType, currentEnabled)}}>Add</button>
-          </td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Roll</th>
+            <th>Player</th>
+            <th>Resource</th>
+            <th>Type</th>
+            <th>Enabled</th>
+            <th>Submit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              {/*Roll*/}
+              <ReactSelect options={[1,2,3,4,5,6, 8,9,10,11,12]} updateValue={setCurrentRoll} />
+            </td>
+            <td>
+              {/*Player*/}
+              <ReactSelect options={props.players} updateValue={setCurrentPlayer} />
+            </td>
+            <td>
+              {/*Resource*/}
+              <ReactSelect options={["Gold", "Wood", "Stone", "Bricks", "Sheep", "Hay"]} updateValue={setCurrentResource} />
+            </td>
+            <td>
+              {/*Amount*/}
+              <ReactSelect options={["Settlement", "City"]} updateValue={setCurrentType} />
+            </td>
+            <td>
+              {/*Enabled*/} 
+              <input type="checkbox" checked={currentEnabled} onChange={() => setCurrentEnabled(!currentEnabled)} />
+            </td>
+            <td>
+              {/*Manual submit button*/}
+              <button className="SubmitButton" onClick={() => {addToSettlements(currentRoll, currentPlayer, currentResource, currentType, currentEnabled)}}>Add</button>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
   )
