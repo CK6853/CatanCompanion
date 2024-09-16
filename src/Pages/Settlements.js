@@ -110,6 +110,10 @@ function SettlementInputBlock(props) {
     props.setSettlements([...props.settlements, newSettlement])
   }
 
+  if (props.players.length < 2) return (
+    <h1 className="ErrorMessage">Not enough players - return home and go to "Players" to set some up</h1>
+  )
+
   return (
     <div className="InputBlock">
       {/*Input fields to enter a new settlement to add to the list*/}

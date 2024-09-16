@@ -1,3 +1,7 @@
 h1 {
   font-size:20px;
 }
+
+.ErrorMessage {
+  color: red;
+}
