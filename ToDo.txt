@@ -2,6 +2,8 @@
 
 Ability to upgrade settlement to city
 
+Ability to filter settlement list by roll
+
 Dice interface for main page
 7 functionality - ability to disable settlements on Robber placement
 Popup for resource gathering
