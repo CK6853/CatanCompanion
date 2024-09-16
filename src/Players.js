@@ -33,6 +33,7 @@ export default function Players(props) {
         <div className="NavBar">
           <button className="NavButton" onClick={() => props.returnHome()}>Return Home</button>
         </div>
+        <h1>Players</h1>
         <div className="Body">
           <div className="InputBlock">
             {/*Input field to enter a new player to add to the list*/}
