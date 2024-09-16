@@ -1,8 +1,8 @@
 import './App.css';
 import { useState, useEffect } from "react";
-import Home from "./Home.js"
-import Players from "./Players.js"
-import Settlements from "./Settlements.js"
+import Home from "./Pages/Home.js"
+import Players from "./Pages/Players.js"
+import Settlements from "./Pages/Settlements.js"
 
 function App() {
   // Set up state for active page
