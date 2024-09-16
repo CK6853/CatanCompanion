@@ -7,7 +7,7 @@ import Settlements from "./Pages/Settlements.js"
 function App() {
   // Set up state for active page
   // Could use routes, but this is a toy application so cbf
-  const [currentPageState, setCurrentPageState] = useState("Players")
+  const [currentPageState, setCurrentPageState] = useState("Home")
 
   // Set up state for player array
   const [playerArray, setPlayerArray] = useState(() => {
@@ -62,7 +62,7 @@ function App() {
       return (<Settlements returnHome={returnHome} settlements={settlementArray} setSettlements={setSettlementArray} players={playerArray}/>)
 
     default: // Should be "Home", but catch-all just in case
-      return (<Home setCurrentPageState={setCurrentPageState} players={playerArray}/>)
+      return (<Home setCurrentPageState={setCurrentPageState} settlements={settlementArray}/>)
   }
 }
 

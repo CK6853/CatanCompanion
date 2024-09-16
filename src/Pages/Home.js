@@ -13,8 +13,8 @@ export default function Home(props) {
         <h1>Catan Companion</h1>
         
         {/*TEMP - FOR TESTING*/}
-        <h1>List of players</h1>
-        {props.players.map((player) => (<p>{player}</p>))}
+        <h1>List of settlements</h1>
+        {props.settlements.map((settlement) => (<p>{settlement}</p>))}
       </div>
     )
   }
