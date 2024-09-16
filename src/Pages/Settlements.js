@@ -98,7 +98,7 @@ function SettlementInputBlock(props) {
   const [currentType, setCurrentType] = useState("Settlement")
   const [currentEnabled, setCurrentEnabled] = useState(true)
 
-  // Use form to add a settlement to the array passed from App and clear the forms
+  // Use form to add a settlement to the array passed from App
   function addToSettlements(roll, player, resource, type, enabled) {
     // Avoid adding from empty fields (though this shouldn't be possible in normal use)
     if(!roll || !player || !resource || !type) return
