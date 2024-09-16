@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from "react";
 import Players from "./Players.js"
+import Settlements from "./Settlements.js"
 
 function App() {
   // Set up state for page
@@ -26,9 +27,17 @@ function App() {
     localStorage.setItem("playerArray", JSON.stringify(playerArray));
   }, [playerArray]);
 
+  // Function for pages to return home
+  function returnHome() {
+    setCurrentPageState("Home)")
+  }
+
   switch(currentPageState) {
     case "Players":
-      return (<Players returnHome={() => setCurrentPageState("Home")} players={playerArray} setPlayers={setPlayerArray}/>)
+      return (<Players returnHome={returnHome} players={playerArray} setPlayers={setPlayerArray}/>)
+
+    case "Settlements":
+      return (<Settlements returnHome={returnHome} />)
 
     default: // Should be "Home", but catch-all just in case
       return (<Home setCurrentPageState={setCurrentPageState} players={playerArray}/>)
@@ -45,7 +54,7 @@ function Home(props) {
         ))}
       </div>
       
-      <h1>List of players</h1>
+      <h1>Temp_List of players</h1>
       {props.players.map((player) => (<p>{player}</p>))}
     </div>
   )
