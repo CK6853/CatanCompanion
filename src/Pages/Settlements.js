@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import ReactSelect from "../ReactSelect";
 
-export const resourceList = ["Gold", "Wood", "Stone", "Bricks", "Sheep", "Hay"]
-export const allowableRolls = [2,3,4,5,6, 8,9,10,11,12]
+const resourceList = ["Gold", "Wood", "Stone", "Bricks", "Sheep", "Hay"]
+const allowableRolls = [2,3,4,5,6, 8,9,10,11,12]
 
 //Settlements Page
 // Props needed: returnHome(), settlements[], setSettlements(), players[]
@@ -221,30 +222,3 @@ function SettlementInputBlock(props) {
     </div>
   )
 }
-
-// Boilerplate to render a react-ified HTML select object
-// Props needed: options[], updateValue()
-function ReactSelect(props) {
-
-  // Because select only supports strings
-  function getInteger(str) {
-    // Get rid of anything that's not purely a number (Because pareseInt will turn "12px" into 12 -_-)
-    if (isNaN(str)) return str
-    // Attempt to turn it into a number
-    let result = parseInt(str)
-    // Because isNaN returns false on whitespace str could still be " ", double-check that what we've created is actually a number
-    if (isNaN(result)) return str
-    return result
-  }
-
-  return (
-    <select onChange={(event) => props.updateValue(getInteger(event.target.value))}>
-      {props.options.map((option, index) => (
-        <option key={index}>
-          {option}
-        </option>
-      ))}
-    </select>
-  )
-}
-
