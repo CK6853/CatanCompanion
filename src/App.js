@@ -3,11 +3,15 @@ import { useState, useEffect } from "react";
 import Home from "./Pages/Home.js"
 import Players from "./Pages/Players.js"
 import Settlements from "./Pages/Settlements.js"
+import Resources from "./Pages/Resources.js"
+import Robber from "./Pages/Robber.js"
 
 function App() {
   // Set up state for active page
   // Could use routes, but this is a toy application so can't be bothered
   const [currentPageState, setCurrentPageState] = useState("Home")
+  // State for Home to pass dice rolls through to Resources or Robber pages
+  const [rolledValue, setRolledValue] = useState(null)
 
   // Set up state for player and settlement arrays - default to empty arrays if not found in localStorage
   const [playerArray, setPlayerArray] = useState(getLocalStorage("playerArray"));
@@ -37,8 +41,14 @@ function App() {
     case "Settlements":
       return (<Settlements returnHome={returnHome} settlements={settlementArray} setSettlements={setSettlementArray} players={playerArray}/>)
 
+    case "Resources":
+      return (<Resources returnHome={returnHome} settlements={settlementArray} rolledValue={rolledValue}/>)
+
+    case "Robber":
+      return (<Robber returnHome={returnHome} settlements={settlementArray} setSettlements={setSettlementArray} players={playerArray}/>)
+
     default: // Should be "Home", but catch-all just in case
-      return (<Home setCurrentPageState={setCurrentPageState} settlements={settlementArray}/>)
+      return (<Home setCurrentPageState={setCurrentPageState} settlements={settlementArray} setRolledValue={setRolledValue}/>)
   }
 }
 

@@ -6,16 +6,27 @@ export default function Home(props) {
   const [selectedRed, setSelectedRed] = useState(null)
   const [selectedYellow, setSelectedYellow] = useState(null)
 
+  // Destructure some of the higher-level state setters to stop the linter complaining about useEffect not having all its dependancies
+  // (Even though these functions should never change)
+  let setCurrentPageState = props.setCurrentPageState
+  let setRolledValue = props.setRolledValue
+
   // If both a red and a yellow have been selected, load the result for that roll
   useEffect(() => {
     if (selectedRed && selectedYellow) {
-      // Temp - just log the result to console for now
-      console.log(`Selected Red ${selectedRed} and Yellow ${selectedYellow}, sum ${selectedRed+selectedYellow}`)
-      // Reset the selection
+      let sum = selectedRed+selectedYellow
+      setRolledValue(sum)
+      if (sum === 7) {
+        setCurrentPageState("Robber")
+      } else {
+        setCurrentPageState("Resources")
+      }
+      // Since we're definitely navigating away and reloading this page later the local states should all be reset
+      // But, to be on the safe side... 
       setSelectedRed(null)
       setSelectedYellow(null)
     }
-  }, [selectedRed, selectedYellow])
+  }, [selectedRed, selectedYellow, setCurrentPageState, setRolledValue])
 
   return (
     <div className="Body">
@@ -35,10 +46,6 @@ export default function Home(props) {
           <td><DiceGroup colour="Y" selected={selectedYellow} setSelected={setSelectedYellow}/></td>
         </tr></tbody></table>
       </div>
-
-      {/*FOR TESTING ONLY*/}
-      Red: {selectedRed}
-      Yellow: {selectedYellow}
     </div>
   )
 }
