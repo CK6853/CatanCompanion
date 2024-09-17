@@ -10,4 +10,8 @@ export default class Settlement {
     toggleEnabled() {
         this.enabled = !this.enabled
     }
+
+    switchType() {
+        this.type = this.type === "Settlement" ? "City" : "Settlement"
+    }
 }

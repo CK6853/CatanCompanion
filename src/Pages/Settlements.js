@@ -35,10 +35,14 @@ function SettlementEditBlock(props) {
   const [resourceFilter, setResourceFilter] = useState("Resource Filter")
   const [filteredSettlements, setFilteredSettlements] = useState(props.settlements)
 
+  // UseEffect can't tell when a Settlement class method is run, so we'll just trigger it manually...
+  // Hate this, but can't see another way around it
+  const [reRender, setReRender] = useState(true)
+
   // When filters or the data are updated, update the filtered data
   useEffect(() => {
     setFilteredSettlements(filterSettlements(props.settlements, rollFilter, playerFilter, resourceFilter))
-  }, [rollFilter, playerFilter, resourceFilter, props.settlements])
+  }, [rollFilter, playerFilter, resourceFilter, props.settlements], reRender)
 
   // Remove a specific settlement
   function removeSettlement(removeIndex) {
@@ -49,16 +53,6 @@ function SettlementEditBlock(props) {
   // Clear all settlements
   function clearSettlements() {
     props.setSettlements([])
-  }
-
-  // Up/downgrade a settlement
-  function toggleSettlementType(upgradeIndex) {
-    // Make a shallow copy to avoid mutating the state directly
-    let tempSettlements = [...props.settlements]
-    // Change the one we want to change
-    tempSettlements[upgradeIndex].type = tempSettlements[upgradeIndex].type === "Settlement" ? "City" : "Settlement"
-    // Set the state to the new state
-    props.setSettlements(tempSettlements)
   }
 
   return (
@@ -96,7 +90,7 @@ function SettlementEditBlock(props) {
               <td>{settlement.type}</td>
               <td>{settlement.enabled ? "☑" : "☐"}</td>
               {/*Dynamically create buttons to switch type*/}
-              <td><button className="TypeButton" onClick={() => toggleSettlementType(index)}>Switch</button></td>
+              <td><button className="TypeButton" onClick={() => {settlement.switchType(); setReRender(!reRender)}}>Switch</button></td>
               {/*Dynamically create remove buttons*/}
               <td><button className="RemoveButton" onClick={() => removeSettlement(index)}>Remove</button></td>
             </tr>
@@ -160,7 +154,7 @@ function SettlementInputBlock(props) {
 
     // Instantiate
     let newSettlement = new Settlement(roll, player, resource, type, enabled)
-    
+
     // Update the list
     props.setSettlements([...props.settlements, newSettlement])
   }
