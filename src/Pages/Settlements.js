@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ReactSelect from "../ReactSelect";
 import { allowableRolls, resourceList } from "../Constants";
 
+// Set up Settlement class
 class Settlement {
   constructor(roll, player, resource, type, enabled) {
       this.roll=roll
@@ -11,10 +12,12 @@ class Settlement {
       this.enabled=enabled
   }
 
+  // Switch from enabled to disabled, or vice versa
   toggleEnabled() {
       this.enabled = !this.enabled
   }
 
+  // Switch from Settlement to City and back
   switchType() {
       this.type = this.type === "Settlement" ? "City" : "Settlement"
   }
@@ -107,6 +110,7 @@ function SettlementEditBlock(props) {
               <td>{settlement.type}</td>
               <td>{settlement.enabled ? "☑" : "☐"}</td>
               {/*Dynamically create buttons to switch type*/}
+              {/*Use the class method to do so, and wake up useEffect to re-render*/}
               <td><button className="TypeButton" onClick={() => {settlement.switchType(); setReRender(!reRender)}}>Switch</button></td>
               {/*Dynamically create remove buttons*/}
               <td><button className="RemoveButton" onClick={() => removeSettlement(index)}>Remove</button></td>
