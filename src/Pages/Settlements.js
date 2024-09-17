@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-
-const allowableRolls = [2,3,4,5,6, 8,9,10,11,12]
-const resourceList = ["Gold", "Wood", "Stone", "Bricks", "Sheep", "Hay"]
+import { allowableRolls, resourceList } from "../constants";
 
 //Settlements Page
 // Props needed: returnHome(), settlements[], setSettlements(), players[]
