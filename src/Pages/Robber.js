@@ -10,11 +10,6 @@ export default function Robber(props) {
   // Should probably use a useEffect, but then it complains about missing dependancies even when I specifically want an empty dependancy array
   // State is just an array of object pointers, so even shallow-copying and then editing mutates the state... so just do it directly
   props.settlements.forEach((settlement) => settlement.enabled = true)
-  
-  /*useEffect(() => {
-    console.log("Effect")
-    props.settlements.forEach((settlement) => settlement.enabled = true)
-  }, [])*/
 
   return (
     <div className="Robber">
@@ -29,6 +24,7 @@ export default function Robber(props) {
   )
 }
 
+// Props needed: settlements[], players[]
 function SettlementTable(props) {
   // Set up states for filters
   const [rollFilter, setRollFilter] = useState("Roll Filter")
@@ -87,14 +83,19 @@ function SettlementTable(props) {
   )
 }
 
+// One section for disabled settlements, one for enabled. Otherwise identical.
+// Props needed: settlements[], reRender(), bool enabled
 function RobberTableSection(props) {
   return props.settlements.map((settlement, index) => (<RobberTableEntry key={index} settlement={settlement} reRender={props.reRender} enabled={props.enabled}/>))
 }
 
+// Props needed: settlements[], reRender(), bool enabled
 function RobberTableEntry(props) {
 
   function toggleEnabled() {
+    // Use the Settlement class method to toggle its enabled state
     props.settlement.toggleEnabled()
+    // Also wake up useEffect
     props.reRender()
   }
 
@@ -104,12 +105,11 @@ function RobberTableEntry(props) {
       <td>{props.settlement.player}</td>
       <td>{props.settlement.resource}</td>
       <td>{props.settlement.type}</td>
+      {/*Just use this section's enabled state to determine if the box is checked - no need to track it separately*/}
       <td><input type="checkbox" checked={props.enabled} onChange={() => toggleEnabled()} /></td>
     </tr>
   )
 }
-
-//{props.settlement.enabled ? "☑" : "☐"}
 
 // Get a filtered list of settlements based on given filters - not including disabled settlements
 function filterEnabledSettlements(settlementArray, rollFilter, playerFilter, resourceFilter) {
