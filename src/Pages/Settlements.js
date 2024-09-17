@@ -143,7 +143,7 @@ function filterSettlements(settlementArray, rollFilter, playerFilter, resourceFi
 // Form layout for adding a new settlement
 function SettlementInputBlock(props) {
   //create some states for fields to use
-  const [currentRoll, setCurrentRoll] = useState(1)
+  const [currentRoll, setCurrentRoll] = useState(2)
   const [currentPlayer, setCurrentPlayer] = useState(props.players[0])
   const [currentResource, setCurrentResource] = useState("Gold")
   const [currentType, setCurrentType] = useState("Settlement")
