@@ -77,8 +77,6 @@ function SettlementTable(props) {
 
       {/*Display error if over-filtered*/}
       {filteredSettlements.length === 0 ? <p>No settlements match your filters</p> : null}
-
-      <button onClick={() => console.log(props.settlements)}>PRINT</button>
     </div>
   )
 }
