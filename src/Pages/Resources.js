@@ -2,7 +2,7 @@
 // Props needed: returnHome(), settlements[], int rolledValue, players[]
 export default function Resources(props) {
   // Filter the settlements list to only contain settlements triggered on this value of dice roll
-  let filteredSettlements = props.settlements.filter((settlement) => settlement.roll === props.rolledValue)
+  let filteredSettlements = props.settlements.filter((settlement) => settlement.roll === props.rolledValue && settlement.enabled === true)
 
   return (
     <div className="Resources">
