@@ -69,7 +69,7 @@ function PlayerEditBlock(props) {
       <table className="PlayersTable">
         <tbody>
           {props.players.map((player) => (
-            <tr>
+            <tr key={player}>
               <td>{player}</td>
               {/*Dynamically create remove buttons*/}
               <td><button className="RemoveButton" onClick={() => removePlayer(player)}>Remove</button></td>

@@ -86,7 +86,7 @@ function SettlementEditBlock(props) {
           {/*Check for over-filter - have error after table to preserve formatting*/}
           {filteredSettlements.length === 0 ? null :
           filteredSettlements.map((settlement, index) => (
-            <tr>
+            <tr key={index}>
               <td>{settlement.roll}</td>
               <td>{settlement.player}</td>
               <td>{settlement.resource}</td>

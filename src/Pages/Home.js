@@ -22,9 +22,9 @@ export default function Home(props) {
       {/*Navigation Bar for alternate pages*/}
       <div className="NavBar">
         {/*Could just copy/paste this, but might want to add more in future*/}
-        {["Players", "Settlements"].map((pagePlayer) => (
+        {["Players", "Settlements"].map((pageName) => (
           /*Use this string to set button text and page state function*/
-          <button className="NavButton" onClick={() => props.setCurrentPageState(pagePlayer)}>{pagePlayer}</button>
+          <button className="NavButton" onClick={() => props.setCurrentPageState(pageName)} key={pageName}>{pageName}</button>
         ))}
       </div>
       <h1>Catan Companion</h1>
@@ -50,9 +50,9 @@ function DiceGroup(props) {
       <table className="DiceGroupTable"><tbody>
         {/*Three rows of this colour's dice*/}
         {[1,2,3].map((row) => (
-          <tr>
+          <tr key={row}>
             {/*Figure out which dice go in this row based on row number, e.g. row 2 has dice 3 and 4*/}
-            {[(2*row)-1,(2*row)].map((value) => (<td>
+            {[(2*row)-1,(2*row)].map((value) => (<td key={value}> 
               <Die value={value} colour={props.colour} selected={props.selected===value} setSelected={props.setSelected}/>
             </td>))}
           </tr>
