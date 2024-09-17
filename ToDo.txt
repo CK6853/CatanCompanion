@@ -3,7 +3,6 @@
 7 functionality - ability to disable settlements on Robber placement
     Will need filters
     Display disabled separately
-Popup for resource gathering
 
 CSS
 
