@@ -42,7 +42,7 @@ function App() {
       return (<Settlements returnHome={returnHome} settlements={settlementArray} setSettlements={setSettlementArray} players={playerArray}/>)
 
     case "Resources":
-      return (<Resources returnHome={returnHome} settlements={settlementArray} rolledValue={rolledValue}/>)
+      return (<Resources returnHome={returnHome} settlements={settlementArray} rolledValue={rolledValue} players={playerArray}/>)
 
     case "Robber":
       return (<Robber returnHome={returnHome} settlements={settlementArray} setSettlements={setSettlementArray} players={playerArray}/>)
