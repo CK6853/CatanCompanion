@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ReactSelect from "../ReactSelect";
 import { allowableRolls, resourceList } from "../Constants";
+import Settlement from "../Settlement";
 
 //Settlements Page
 // Props needed: returnHome(), settlements[], setSettlements(), players[]
@@ -157,14 +158,10 @@ function SettlementInputBlock(props) {
     // Avoid adding from empty fields (though this shouldn't be possible in normal use)
     if(!roll || !player || !resource || !type) return
 
+    // Instantiate
+    let newSettlement = new Settlement(roll, player, resource, type, enabled)
+    
     // Update the list
-    let newSettlement = {
-      roll: roll,
-      player: player,
-      resource:resource,
-      type:type,
-      enabled:enabled
-    }
     props.setSettlements([...props.settlements, newSettlement])
   }
 
