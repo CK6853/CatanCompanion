@@ -1,9 +1,8 @@
 
 
-
-Ability to filter settlement list by roll - will also need it for Robber interface
-
 Dice interface for main page
 7 functionality - ability to disable settlements on Robber placement
+    Will need filters
+    Display disabled separately
 Popup for resource gathering
 
