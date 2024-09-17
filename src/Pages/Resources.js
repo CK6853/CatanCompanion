@@ -1,16 +1,59 @@
 // Resources Page
-// Props needed: returnHome(), settlements[], int rolledValue
+// Props needed: returnHome(), settlements[], int rolledValue, players[]
 export default function Resources(props) {
-    return (
-      <div className="Resources">
-        {/*Nav to return home*/}
-        <div className="NavBar">
-          <button className="NavButton" onClick={() => props.returnHome()}>Return Home</button>
-        </div>
-        <h1>Resources</h1>
-        <div className="Body">
-          Rolled value: {props.rolledValue}
-        </div>
+  // Filter the settlements list to only contain settlements triggered on this value of dice roll
+  let filteredSettlements = props.settlements.filter((settlement) => settlement.roll === props.rolledValue)
+
+  return (
+    <div className="Resources">
+      <h1>Resources</h1>
+      <div className="Body">
+        {/*Give a resource list for each player*/}
+        {props.players.map((player) => (<PlayerResources player={player} settlements={filteredSettlements}/>))}
       </div>
-    )
+      {/*Button to return home once resources are handed out*/}
+      <button className="ConfirmButton" onClick={() => props.returnHome()}>Done</button>
+    </div>
+  )
+}
+
+// Display the resources gathered for a specific player
+// Props needed: str player, settlements[]
+function PlayerResources(props) {
+  // Further filter settlements to only contain settlements owned by this player
+  let filteredSettlements = props.settlements.filter((settlement) => settlement.player === props.player)
+  let gatheredResources = {}
+
+  // Aggregate all the settlements owned by this player to create a sum total of each resource
+  for (let settlement of filteredSettlements) {
+    if (settlement.resource in gatheredResources) {
+      gatheredResources[settlement.resource] += typeToInt(settlement.type)
+    } else {
+      gatheredResources[settlement.resource] = typeToInt(settlement.type)
+    }
   }
+  // Transform this object into an array of formatted strings saying how many of each resource were gathered
+  let gatheredArray = Object.entries(gatheredResources).map(([resource, amount]) => `${amount} ${resource}`)
+  // Join those strings together in a readable form
+  let gatheredString = gatheredArray.join(", ")
+
+  // If a player got no resources, explicitly say that. Otherwise, list the resources
+  return (
+    <div className="PlayerResources">
+      {props.player} gets{gatheredString === "" ? " nothing!" : `: ${gatheredString}`} 
+    </div>
+  )
+}
+
+// Transforms a settlement type into a number of resources granted
+function typeToInt(type) {
+  switch(type) {
+    case "Settlement":
+      return 1
+    case "City":
+      return 2
+    default: 
+      return 0
+  }
+}
+
