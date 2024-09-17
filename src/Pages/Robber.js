@@ -1,3 +1,5 @@
+// Robber Page
+// Props needed: returnHome(), settlements[], setSettlements(), players[]
 export default function Robber(props) {
     return (
       <div className="Robber">

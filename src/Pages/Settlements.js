@@ -4,8 +4,8 @@ const allowableRolls = [2,3,4,5,6, 8,9,10,11,12]
 const resourceList = ["Gold", "Wood", "Stone", "Bricks", "Sheep", "Hay"]
 
 //Settlements Page
+// Props needed: returnHome(), settlements[], setSettlements(), players[]
 export default function Settlements(props) {
-
   return (
     <div className="Settlements">
       {/*Nav to return home*/}
@@ -26,6 +26,7 @@ export default function Settlements(props) {
 }
 
 // Block to display all current settlements for possible removal
+// Props needed: settlements[], setSettlements(), players[]
 function SettlementEditBlock(props) {
   const [rollFilter, setRollFilter] = useState("Roll Filter")
   const [playerFilter, setPlayerFilter] = useState("Player Filter")
@@ -141,6 +142,7 @@ function filterSettlements(settlementArray, rollFilter, playerFilter, resourceFi
 }
 
 // Form layout for adding a new settlement
+// Props needed: settlements[], setSettlements(), players[]
 function SettlementInputBlock(props) {
   //create some states for fields to use
   const [currentRoll, setCurrentRoll] = useState(2)
@@ -219,6 +221,7 @@ function SettlementInputBlock(props) {
 }
 
 // Boilerplate to render a react-ified HTML select object
+// Props needed: options[], updateValue()
 function ReactSelect(props) {
 
   // Because select only supports strings

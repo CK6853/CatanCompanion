@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 // Home Page
+// Props needed: setCurrentPageState(), settlements[], setRolledValue()
 export default function Home(props) {
   // Set up state to store which dice are currently selected for each colour set
   const [selectedRed, setSelectedRed] = useState(null)
@@ -51,6 +52,7 @@ export default function Home(props) {
 }
 
 // One group of dice - either red or yellow
+// Props needed: str colour, int selected, setSelected()
 function DiceGroup(props) {
   return (
     <div className="DiceGroup">
@@ -70,6 +72,7 @@ function DiceGroup(props) {
 }
 
 // Individual die, displayed within a table cell
+// Props needed: int value, str colour, int selected, setSelected()
 function Die(props) {
   return (
     <img 

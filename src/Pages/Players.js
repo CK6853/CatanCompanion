@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-//Players Page
+// Players Page
+// Props needed: returnHome(), players[], setPlayers()
 export default function Players(props) {
   return (
     <div className="Players">
@@ -18,6 +19,8 @@ export default function Players(props) {
   )
 }
 
+// Form layout for adding a new player
+// Props needed: players[], setPlayers()
 function PlayerInputBlock(props) {
   // State for player entry field
   const [currentEntry, setCurrentEntry] = useState("")
@@ -51,6 +54,8 @@ function PlayerInputBlock(props) {
   )
 }
 
+// Block to display all current players for possible removal
+// Props needed: players[], setPlayers()
 function PlayerEditBlock(props) {
   // Remove a specific player
   function removePlayer(playerName) {

@@ -1,3 +1,5 @@
+// Resources Page
+// Props needed: returnHome(), settlements[], int rolledValue
 export default function Resources(props) {
     return (
       <div className="Resources">
