@@ -11,6 +11,7 @@ export default function Players(props) {
       </div>
       <h1>Players</h1>
       <div className="Body">
+        {/*Block to allow entry of new players*/}
         <PlayerInputBlock players={props.players} setPlayers={props.setPlayers}/>
         {/*Block to display all current players for possible removal - only render if data exists*/}
         {props.players.length === 0 ? (null) : (<PlayerEditBlock players={props.players} setPlayers={props.setPlayers}/>)}
@@ -25,7 +26,7 @@ function PlayerInputBlock(props) {
   // State for player entry field
   const [currentEntry, setCurrentEntry] = useState("")
 
-  // Use form to add a player to the array passed from App and clear the form
+  // Use form to add a player to the state array passed from App and clear the form
   function addToPlayers(playerName) {
     // Avoid adding from an empty field
     if (!playerName) return
@@ -34,13 +35,14 @@ function PlayerInputBlock(props) {
     // Reset the field
     setCurrentEntry("")
   }
+
   return (
     <div className="InputBlock">
       {/*Input field to enter a new player to add to the list*/}
       <input
         className="InputBox"
         type="text"
-        /*Use the state set above to hold value*/
+        /*Use state to hold value*/
         value={currentEntry}
         /*When updated, update the state*/
         onChange={(event) => setCurrentEntry(event.target.value)}
@@ -57,6 +59,7 @@ function PlayerInputBlock(props) {
 // Block to display all current players for possible removal
 // Props needed: players[], setPlayers()
 function PlayerEditBlock(props) {
+
   // Remove a specific player
   function removePlayer(playerName) {
     // Use an array filter to set players state without modifying the state itself
@@ -73,6 +76,7 @@ function PlayerEditBlock(props) {
       {/*Table to display all players for possible removal*/}
       <table className="PlayersTable">
         <tbody>
+          {/*Create a row for each player*/}
           {props.players.map((player) => (
             <tr key={player}>
               <td>{player}</td>

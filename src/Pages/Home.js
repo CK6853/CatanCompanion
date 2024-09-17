@@ -33,7 +33,7 @@ export default function Home(props) {
     <div className="Body">
       {/*Navigation Bar for alternate pages*/}
       <div className="NavBar">
-        {/*Could just copy/paste this, but might want to add more in future*/}
+        {/*Could just copy/paste this, but I like using map*/}
         {["Players", "Settlements"].map((pageName) => (
           /*Use this string to set button text and page state function*/
           <button className="NavButton" onClick={() => props.setCurrentPageState(pageName)} key={pageName}>{pageName}</button>
@@ -72,11 +72,11 @@ function DiceGroup(props) {
 }
 
 // Individual die, displayed within a table cell
-// Props needed: int value, str colour, int selected, setSelected()
+// Props needed: int value, str colour, bool selected, setSelected()
 function Die(props) {
   return (
     <img 
-      // Formatting needs to be different if this value is selected for this colour, so set className appropriately
+      // Formatting needs to be different if this die is selected for this colour, so set className appropriately
       className={props.selected ? "SelectedDiceImage" : "DiceImage"} 
 
       // Needs to display its own colour and value image
@@ -86,7 +86,7 @@ function Die(props) {
       // If already selected, selecting again should remove selection
       onClick={props.selected ? () => props.setSelected(null) : () => props.setSelected(props.value)}
 
-      alt="Dice" 
+      alt="Die" 
     />
   )
 }

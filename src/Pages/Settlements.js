@@ -28,6 +28,8 @@ export default function Settlements(props) {
 // Block to display all current settlements for possible removal
 // Props needed: settlements[], setSettlements(), players[]
 function SettlementEditBlock(props) {
+
+  // Set up states for filters
   const [rollFilter, setRollFilter] = useState("Roll Filter")
   const [playerFilter, setPlayerFilter] = useState("Player Filter")
   const [resourceFilter, setResourceFilter] = useState("Resource Filter")
@@ -63,7 +65,7 @@ function SettlementEditBlock(props) {
     <div className="EditBlock">
       <h1>Existing</h1>
       {/*Table of all settlements, to allow removals*/}
-      <table className="settlementsTable">
+      <table className="SettlementsTable">
         {/*Header row*/}
         <thead>
           <tr>
@@ -84,7 +86,7 @@ function SettlementEditBlock(props) {
             <td><ReactSelect options={["Resource Filter", ...resourceList]} updateValue={setResourceFilter}/></td>
           </tr>
           {/*Data rows - filtered*/}
-          {/*Check for over-filter - have error after table to preserve formatting*/}
+          {/*Check for over-filter - display error after table to preserve formatting*/}
           {filteredSettlements.length === 0 ? null :
           filteredSettlements.map((settlement, index) => (
             <tr key={index}>
@@ -125,7 +127,7 @@ function filterSettlements(settlementArray, rollFilter, playerFilter, resourceFi
       return settlement.roll === rollFilter
     })
   }
-
+  // repeat
   if (playerFilter !== "Player Filter") {
     shallowCopy = shallowCopy.filter((settlement) => {
       return settlement.player === playerFilter
@@ -151,7 +153,7 @@ function SettlementInputBlock(props) {
   const [currentType, setCurrentType] = useState("Settlement")
   const [currentEnabled, setCurrentEnabled] = useState(true)
 
-  // Use form to add a settlement to the array passed from App
+  // Use form to add a settlement to the state array passed from App
   function addToSettlements(roll, player, resource, type, enabled) {
     // Avoid adding from empty fields (though this shouldn't be possible in normal use)
     if(!roll || !player || !resource || !type) return
