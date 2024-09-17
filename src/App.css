@@ -5,3 +5,7 @@ h1 {
 .ErrorMessage {
   color: red;
 }
+
+.SelectedDiceImage {
+  border: 2px solid black;
+}
