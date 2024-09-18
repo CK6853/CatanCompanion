@@ -5,11 +5,6 @@ import { allowableRolls, resourceList } from "../Constants";
 // Robber Page
 // Props needed: returnHome(), settlements[], setSettlements(), players[]
 export default function Robber(props) {
-  
-  // Re-enable any disabled settlements each time this page is loaded
-  // Should probably use a useEffect, but then it complains about missing dependancies even when I specifically want an empty dependancy array
-  // State is just an array of object pointers, so even shallow-copying and then editing mutates the state... so just do it directly
-  props.settlements.forEach((settlement) => settlement.enabled = true)
 
   return (
     <div className="Robber">
