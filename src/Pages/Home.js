@@ -31,16 +31,16 @@ export default function Home(props) {
 
   return (
     <div className="Home">
+      {/*Navigation Bar for alternate pages*/}
+      <div className="NavBar">
+        {/*Could just copy/paste this, but I like using map*/}
+        {["Players", "Settlements"].map((pageName) => (
+          /*Use this string to set button text and page state function*/
+          <button className="NavButton" onClick={() => props.setCurrentPageState(pageName)} key={pageName}>{pageName}</button>
+        ))}
+      </div>
+      <h1>Catan Companion</h1>
       <div className="Body">
-        {/*Navigation Bar for alternate pages*/}
-        <div className="NavBar">
-          {/*Could just copy/paste this, but I like using map*/}
-          {["Players", "Settlements"].map((pageName) => (
-            /*Use this string to set button text and page state function*/
-            <button className="NavButton" onClick={() => props.setCurrentPageState(pageName)} key={pageName}>{pageName}</button>
-          ))}
-        </div>
-        <h1>Catan Companion</h1>
         <div className="DiceContainer">
           <table className="DiceSplit"><tbody><tr>
             {/*Put the two sets of dice next to each other, pass their respective colour codes and selection states*/}
