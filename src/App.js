@@ -34,22 +34,31 @@ function App() {
 
   // Figure out which page to render
   // Again, could set up routes but can't be bothered for an application this small
-  switch(currentPageState) {
-    case "Players":
-      return (<Players returnHome={returnHome} players={playerArray} setPlayers={setPlayerArray}/>)
-
-    case "Settlements":
-      return (<Settlements returnHome={returnHome} settlements={settlementArray} setSettlements={setSettlementArray} players={playerArray}/>)
-
-    case "Resources":
-      return (<Resources returnHome={returnHome} settlements={settlementArray} rolledValue={rolledValue} players={playerArray}/>)
-
-    case "Robber":
-      return (<Robber returnHome={returnHome} settlements={settlementArray} setSettlements={setSettlementArray} players={playerArray}/>)
-
-    default: // Should be "Home", but catch-all just in case
-      return (<Home setCurrentPageState={setCurrentPageState} settlements={settlementArray} setRolledValue={setRolledValue}/>)
+  function getCurrentPage() {
+    switch(currentPageState) {
+      case "Players":
+        return (<Players returnHome={returnHome} players={playerArray} setPlayers={setPlayerArray}/>)
+  
+      case "Settlements":
+        return (<Settlements returnHome={returnHome} settlements={settlementArray} setSettlements={setSettlementArray} players={playerArray}/>)
+  
+      case "Resources":
+        return (<Resources returnHome={returnHome} settlements={settlementArray} rolledValue={rolledValue} players={playerArray}/>)
+  
+      case "Robber":
+        return (<Robber returnHome={returnHome} settlements={settlementArray} setSettlements={setSettlementArray} players={playerArray}/>)
+  
+      default: // Should be "Home", but catch-all just in case
+        return (<Home setCurrentPageState={setCurrentPageState} settlements={settlementArray} setRolledValue={setRolledValue}/>)
+    }
   }
+
+  // Render this page inside a div so we can have application-wide css
+  return (
+    <div className="App">
+      {getCurrentPage()}
+    </div>
+  )
 }
 
 export default App;
