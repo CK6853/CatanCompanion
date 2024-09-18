@@ -19,6 +19,7 @@ export default function Robber(props) {
   )
 }
 
+// Table of settlements to enable/disable
 // Props needed: settlements[], players[]
 function SettlementTable(props) {
   // Set up states for filters

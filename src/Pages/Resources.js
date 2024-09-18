@@ -27,8 +27,10 @@ function PlayerResources(props) {
   // Aggregate all the settlements owned by this player to create a sum total of each resource
   for (let settlement of filteredSettlements) {
     if (settlement.resource in gatheredResources) {
+      // If we already have a count for this resource, add to it
       gatheredResources[settlement.resource] += typeToInt(settlement.type)
     } else {
+      // If not, make it
       gatheredResources[settlement.resource] = typeToInt(settlement.type)
     }
   }
@@ -51,7 +53,8 @@ function typeToInt(type) {
     case "Settlement":
       return 1
     case "City":
-      return 2
+      return 
+    // Should only ever be "Settlement" or "City", but just to be thorough...
     default: 
       return 0
   }
