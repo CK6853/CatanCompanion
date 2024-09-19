@@ -20,3 +20,12 @@
     height: 30px;
     margin-top: 10px;
 }
+
+.InputBox {
+    height: 20px;
+    min-width: 200px;
+}
+.SubmitButton {
+    height: 24px;
+    margin-left: 2px;
+}
