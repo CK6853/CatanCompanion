@@ -55,7 +55,7 @@ function typeToInt(type) {
     case "Settlement":
       return 1
     case "City":
-      return 
+      return 2
     // Should only ever be "Settlement" or "City", but just to be thorough...
     default: 
       return 0
