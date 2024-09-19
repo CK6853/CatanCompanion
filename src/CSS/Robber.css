@@ -1,0 +1,22 @@
+
+
+.Robber td {
+    border: 1px solid white;
+    padding: 10px;
+}
+
+.Robber th {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.FilterRow td {
+    border-width: 0;
+    padding-top: 0;
+}
+
+.Robber .ConfirmButton {
+    width: 30%;
+    height: 30px;
+    margin-bottom: 10px;
+}
