@@ -2,6 +2,7 @@
 
 .Resources .ConfirmButton {
     width: 30%;
-    height: 30px;
+    height: 40px;
     margin-top: 10px;
+    font-size: 20px;
 }
