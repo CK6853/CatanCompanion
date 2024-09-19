@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ReactSelect from "../ReactSelect";
 import { allowableRolls, resourceList } from "../Constants";
+import '../CSS/Settlements.css';
 
 // Set up Settlement class
 class Settlement {

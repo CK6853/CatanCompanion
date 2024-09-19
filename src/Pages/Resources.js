@@ -1,3 +1,5 @@
+import '../CSS/Resources.css';
+
 // Resources Page
 // Props needed: returnHome(), settlements[], int rolledValue, players[]
 export default function Resources(props) {

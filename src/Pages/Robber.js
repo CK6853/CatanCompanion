@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ReactSelect from "../ReactSelect";
 import { allowableRolls, resourceList } from "../Constants";
+import '../CSS/Robber.css';
 
 // Robber Page
 // Props needed: returnHome(), settlements[], setSettlements(), players[]

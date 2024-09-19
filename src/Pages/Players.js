@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../CSS/Players.css';
 
 // Players Page
 // Props needed: returnHome(), players[], setPlayers()
