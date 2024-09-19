@@ -1,0 +1,27 @@
+.EditBlock {
+    margin-top: 20px;
+}
+
+td {
+    border: 1px solid white;
+    padding: 10px;
+}
+.PlayersTable {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+.NameCell {
+    text-align: right;
+}
+.ButtonCell {
+    text-align: left;
+}
+.RemoveButton {
+    min-height: 30px;
+}
+
+.ClearButton {
+    width: 30%;
+    height: 30px;
+    margin-top: 10px;
+}

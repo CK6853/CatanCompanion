@@ -80,13 +80,14 @@ function PlayerEditBlock(props) {
           {/*Create a row for each player*/}
           {props.players.map((player) => (
             <tr key={player}>
-              <td>{player}</td>
+              <td className="NameCell">{player}</td>
               {/*Dynamically create remove buttons*/}
-              <td><button className="RemoveButton" onClick={() => removePlayer(player)}>Remove</button></td>
+              <td className="ButtonCell"><button className="RemoveButton" onClick={() => removePlayer(player)}>Remove</button></td>
             </tr>
           ))}
         </tbody>
       </table>
+      
       {/*Button to clear all players - only render if more than one player*/}
       {props.players.length < 2 ? (null) : (
         <button className="ClearButton" onClick={() => clearPlayers()}>Clear All Players</button>
