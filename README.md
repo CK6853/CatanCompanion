@@ -21,3 +21,5 @@ When a 7 is rolled, the Robber triggers and may be moved to a new tile. Any sett
 
 ## Other notes
 This app uses your browser's local storage. If you refresh or close the page, or possibly even when you restart your device, your data will still be there. For starting a new game, the data can be cleared on the Players and Settlements pages. If you want to completely remove the data (including the empty arrays), you will need to delete it through your browser's settings (this differs per browser, but will probably be bundled near your cookie-clearing options). 
+
+Currently designed for use on my tablet, might make it phone-compatible at some point but I hate CSS. 
