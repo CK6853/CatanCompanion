@@ -78,7 +78,7 @@ function SettlementEditBlock(props) {
 
   return (
     <div className="EditBlock">
-      <h1>Existing</h1>
+      <h2>Existing</h2>
       {/*Table of all settlements, to allow removals*/}
       <table className="SettlementsTable">
         {/*Header row*/}
@@ -189,7 +189,7 @@ function SettlementInputBlock(props) {
   return (
     <div className="InputBlock">
       {/*Input fields to enter a new settlement to add to the list*/}
-      <h1>Add New</h1>
+      <h2>Add New</h2>
       <table className="InputTable">
         <thead>
           <tr>
