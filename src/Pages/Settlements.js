@@ -182,7 +182,7 @@ function SettlementInputBlock(props) {
 
   // Check if there are enough players to run a game before rendering - also prevents player dropdown showing as empty
   if (props.players.length < 2) return (
-    <h1 className="ErrorMessage">Not enough players - return home and go to "Players" to set some up</h1>
+    <h2 className="ErrorMessage">Not enough players - return home and go to "Players" to set some up</h2>
   )
 
   return (
