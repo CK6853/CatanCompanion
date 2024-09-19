@@ -2,13 +2,9 @@
     margin-top: 20px;
 }
 
-td {
+.Players td {
     border: 1px solid white;
     padding: 10px;
-}
-.PlayersTable {
-    border-collapse: collapse;
-    margin: 0 auto;
 }
 .NameCell {
     text-align: right;
