@@ -61,8 +61,6 @@ function App() {
   )
 }
 
-export default App;
-
 function getLocalStorage(getKey) {
     // Check localStorage to see if this is already initialised
     const saved = localStorage.getItem(getKey);
@@ -75,3 +73,5 @@ function getLocalStorage(getKey) {
       return []
     }
 }
+
+export default App;

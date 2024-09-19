@@ -6,7 +6,6 @@ import '../CSS/Robber.css';
 // Robber Page
 // Props needed: returnHome(), settlements[], setSettlements(), players[]
 export default function Robber(props) {
-
   return (
     <div className="Robber">
       <h1>Robber</h1>
@@ -15,7 +14,6 @@ export default function Robber(props) {
       <div className="Body">
         <SettlementTable settlements={props.settlements} players={props.players}/>
       </div>
-      
     </div>
   )
 }
@@ -40,7 +38,6 @@ function SettlementTable(props) {
     setFilteredSettlements(filterEnabledSettlements(props.settlements, rollFilter, playerFilter, resourceFilter))
     setDisabledSettlements(props.settlements.filter((settlement) => {return settlement.enabled === false}))
   }, [rollFilter, playerFilter, resourceFilter, props.settlements, reRender])
-
 
   return (
     <div className="RobberBlock">
