@@ -1,0 +1,41 @@
+.DiceContainer {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .DiceSplit {
+    table-layout: fixed;
+    width: 100%;
+  }
+  .DiceGroup {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  .DiceRow {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+  .DieCell {
+    position: relative;
+    margin: 5px;
+    top: 0;
+    left: 0;
+  }
+  .DieImage {
+    max-width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  .DieOverlay {
+    max-width: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    opacity: 0;
+  }
+  .DieOverlay.Selected {
+    opacity: 0.3;
+  }

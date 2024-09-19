@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import '../CSS/Home.css';
 
 // Home Page
 // Props needed: setCurrentPageState(), settlements[], setRolledValue()

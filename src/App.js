@@ -1,4 +1,4 @@
-import './App.css';
+import './CSS/App.css';
 import { useState, useEffect } from "react";
 import Home from "./Pages/Home.js"
 import Players from "./Pages/Players.js"

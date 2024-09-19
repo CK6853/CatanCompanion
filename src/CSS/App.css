@@ -1,0 +1,43 @@
+div {
+  border: 1px solid red;
+}
+
+html {
+  background-color: #121212;
+}
+
+h1 {
+  font-size:20px;
+}
+
+.ErrorMessage {
+  color: red;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+.Home, .Players, .Settlements, .Resources, .Robber {
+  width: 100%;
+}
+.Body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.NavBar { 
+  display: flex;
+  justify-content: center;
+}
+.NavButton {
+  margin: 10px;
+  min-height: 50px;
+  min-width: 30%;
+}
+
