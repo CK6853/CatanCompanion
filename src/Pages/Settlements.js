@@ -95,7 +95,7 @@ function SettlementEditBlock(props) {
         </thead>
         <tbody>
           {/*Filters*/}
-          <tr>
+          <tr className="FilterRow">
             <td><ReactSelect options={["Roll Filter", ...allowableRolls]} updateValue={setRollFilter}/></td>
             <td><ReactSelect options={["Player Filter", ...props.players]} updateValue={setPlayerFilter}/></td>
             <td><ReactSelect options={["Resource Filter", ...resourceList]} updateValue={setResourceFilter}/></td>

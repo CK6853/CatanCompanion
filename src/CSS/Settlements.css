@@ -1,0 +1,27 @@
+
+.Settlements td {
+    border: 1px solid white;
+    padding: 10px;
+}
+
+.Settlements th {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.FilterRow td {
+    border-width: 0;
+    padding-top: 0;
+}
+
+.Settlements .RemoveButton, .Settlements .TypeButton, .Settlements .SubmitButton {
+    min-height: 30px;
+    min-width: 100px;
+}
+
+.Settlements .ClearButton {
+    width: 30%;
+    min-width: 100px;
+    height: 30px;
+    margin-top: 10px;
+}
