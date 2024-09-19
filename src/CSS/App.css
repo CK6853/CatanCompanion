@@ -12,6 +12,14 @@ h2 {
   margin-bottom: 5px;
 }
 
+button {
+  background-color: #c7c7c7;
+  border: none;
+}
+select {
+  background: #e7e7e7;
+}
+
 .ErrorMessage {
   color: red;
 }
