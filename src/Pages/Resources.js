@@ -44,7 +44,7 @@ function PlayerResources(props) {
   // If a player got no resources, explicitly say that. Otherwise, list the resources
   return (
     <div className="PlayerResources">
-      <p>{props.player} gets{gatheredString === "" ? " nothing!" : `: ${gatheredString}`}</p>
+      {props.player} gets{gatheredString === "" ? " nothing!" : `: ${gatheredString}`}
     </div>
   )
 }
