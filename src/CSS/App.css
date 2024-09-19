@@ -32,7 +32,7 @@ table {
 .App {
   display: flex;
   justify-content: center;
-  color: white;
+  color: #eeeeee;
   text-align: center;
 }
 .Home, .Players, .Settlements, .Resources, .Robber {
