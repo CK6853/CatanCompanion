@@ -61,11 +61,13 @@ function DiceGroup(props) {
       <table className="DiceGroupTable"><tbody>
         {/*Three rows of this colour's dice*/}
         {[1,2,3].map((row) => (
-          <tr key={row}>
+          <tr key={row} className="DiceRow"> 
             {/*Figure out which dice go in this row based on row number, e.g. row 2 has dice 3 and 4*/}
-            {[(2*row)-1,(2*row)].map((value) => (<td key={value}> 
-              <Die value={value} colour={props.colour} selected={props.selected===value} setSelected={props.setSelected}/>
-            </td>))}
+            {[(2*row)-1,(2*row)].map((value) => (
+              <td key={value}> 
+                <Die value={value} colour={props.colour} selected={props.selected===value} setSelected={props.setSelected}/>
+              </td>
+            ))}
           </tr>
         ))}
       </tbody></table>
@@ -77,18 +79,24 @@ function DiceGroup(props) {
 // Props needed: int value, str colour, bool selected, setSelected()
 function Die(props) {
   return (
-    <img 
-      // Formatting needs to be different if this die is selected for this colour, so set className appropriately
-      className={props.selected ? "SelectedDiceImage" : "DiceImage"} 
-
-      // Needs to display its own colour and value image
-      src={process.env.PUBLIC_URL + `/Dice/${props.colour}${props.value}.png`} 
-
-      // If this die isn't selected, clicking it should set the selected value to this die's value
-      // If already selected, selecting again should remove selection
-      onClick={props.selected ? () => props.setSelected(null) : () => props.setSelected(props.value)}
-
-      alt="Die" 
-    />
+    <div className="DieCell">
+      <img className="DieImage"
+        // Needs to display its own colour and value image
+        src={process.env.PUBLIC_URL + `/Dice/${props.colour}${props.value}.png`} 
+        alt="Die" 
+      />
+      
+      <img 
+        // Formatting needs to be different if this die is selected for this colour, so set className appropriately
+        class={props.selected ? "DieOverlay Selected" : "DieOverlay"}
+        src={process.env.PUBLIC_URL + "/Dice/white.png"} 
+        alt="White" 
+        // If this die isn't selected, clicking it should set the selected value to this die's value
+        // If already selected, selecting again should remove selection
+        onClick={props.selected ? () => props.setSelected(null) : () => props.setSelected(props.value)}
+      />
+      
+    </div>
+    
   )
 }
