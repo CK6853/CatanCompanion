@@ -1,3 +1,7 @@
+html {
+  background-color: #121212;
+}
+
 h1 {
   font-size:20px;
 }
@@ -6,6 +10,73 @@ h1 {
   color: red;
 }
 
-.SelectedDiceImage {
-  border: 2px solid black;
+.App {
+  display: flex;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+.Home, .Players, .Settlements, .Resources, .Robber {
+  width: 100%;
+}
+.Body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.NavBar { 
+  display: flex;
+  justify-content: center;
+}
+.NavButton {
+  margin: 10px;
+  min-height: 50px;
+  min-width: 30%;
+}
+
+.DiceContainer {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  
+}
+.DiceSplit {
+  table-layout: fixed;
+  width: 100%;
+  
+}
+.DiceGroup {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+.DiceRow {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.DieCell {
+  position: relative;
+  margin: 5px;
+  top: 0;
+  left: 0;
+}
+.DieImage {
+  max-width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.DieOverlay {
+  max-width: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+  opacity: 0;
+}
+.DieOverlay.Selected {
+  opacity: 0.3;
 }
