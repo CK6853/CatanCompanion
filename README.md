@@ -1,4 +1,4 @@
-Deployed [here](https://iridescent-griffin-d67dee.netlify.app/)
+## Deployed [here](https://iridescent-griffin-d67dee.netlify.app/)
 
 # Catan Companion
 Catan is one of the few board games I can convince my family to play, but there's one part of the game that some of them find frustrating - resource gathering. 
