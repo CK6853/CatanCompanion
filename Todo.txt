@@ -1,5 +1,3 @@
 
 
 Screenshots for CSS
-
-Netlify for hosting as a demo? 
