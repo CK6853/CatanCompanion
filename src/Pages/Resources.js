@@ -10,6 +10,8 @@ export default function Resources(props) {
     <div className="Resources">
       <h1>Resources</h1>
       <div className="Body">
+        {/*Display the total of the rolled dice*/}
+        <h2>{`Rolled a ${props.rolledValue}`}</h2>
         {/*Give a resource list for each player*/}
         {props.players.map((player) => (<PlayerResources player={player} settlements={filteredSettlements}/>))}
       </div>
