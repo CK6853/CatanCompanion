@@ -88,7 +88,7 @@ function Die(props) {
       />
       <img 
         // Formatting needs to be different if this die is selected for this colour, so set className appropriately
-        class={props.selected ? "DieOverlay Selected" : "DieOverlay"}
+        className={props.selected ? "DieOverlay Selected" : "DieOverlay"}
         src={process.env.PUBLIC_URL + "/Dice/white.png"} 
         alt="White" 
         // If this die isn't selected, clicking it should set the selected value to this die's value

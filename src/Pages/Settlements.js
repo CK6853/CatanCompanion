@@ -80,9 +80,9 @@ function SettlementEditBlock(props) {
         <tbody>
           {/*Filters*/}
           <tr className="FilterRow">
-            <td><ReactSelect options={["Roll Filter", ...allowableRolls]} updateValue={setRollFilter}/></td>
-            <td><ReactSelect options={["Player Filter", ...props.players]} updateValue={setPlayerFilter}/></td>
-            <td><ReactSelect options={["Resource Filter", ...resourceList]} updateValue={setResourceFilter}/></td>
+            <td><ReactSelect options={["Roll Filter", ...allowableRolls]} updateValue={setRollFilter} id="RollFilter"/></td>
+            <td><ReactSelect options={["Player Filter", ...props.players]} updateValue={setPlayerFilter} id="PlayerFilter"/></td>
+            <td><ReactSelect options={["Resource Filter", ...resourceList]} updateValue={setResourceFilter} id="ResourceFilter"/></td>
           </tr>
           {/*Data rows - filtered*/}
           {/*Check for over-filter - display error after table to preserve formatting*/}
@@ -184,23 +184,23 @@ function SettlementInputBlock(props) {
           <tr>
             <td>
               {/*Roll*/}
-              <ReactSelect options={allowableRolls} updateValue={setCurrentRoll} />
+              <ReactSelect options={allowableRolls} updateValue={setCurrentRoll} id="RollSelect"/>
             </td>
             <td>
               {/*Player*/}
-              <ReactSelect options={props.players} updateValue={setCurrentPlayer} />
+              <ReactSelect options={props.players} updateValue={setCurrentPlayer} id="PlayerSelect"/>
             </td>
             <td>
               {/*Resource*/}
-              <ReactSelect options={resourceList} updateValue={setCurrentResource} />
+              <ReactSelect options={resourceList} updateValue={setCurrentResource} id="ResourceSelect"/>
             </td>
             <td>
-              {/*Amount*/}
-              <ReactSelect options={["Settlement", "City"]} updateValue={setCurrentType} />
+              {/*Settlement Type*/}
+              <ReactSelect options={["Settlement", "City"]} updateValue={setCurrentType} id="TypeSelect"/>
             </td>
             <td>
               {/*Enabled*/} 
-              <input type="checkbox" checked={currentEnabled} onChange={() => setCurrentEnabled(!currentEnabled)} />
+              <input type="checkbox" checked={currentEnabled} onChange={() => setCurrentEnabled(!currentEnabled)} id="SettlementEnabled"/>
             </td>
             <td>
               {/*Manual submit button*/}

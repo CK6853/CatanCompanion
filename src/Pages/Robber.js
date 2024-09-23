@@ -58,9 +58,9 @@ function SettlementTable(props) {
           <RobberTableSection settlements={disabledSettlements} reRender={() => setReRender(!reRender)} enabled={false}/>
           {/*Filters*/}
           <tr className="FilterRow">
-            <td><ReactSelect options={["Roll Filter", ...allowableRolls]} updateValue={setRollFilter}/></td>
-            <td><ReactSelect options={["Player Filter", ...props.players]} updateValue={setPlayerFilter}/></td>
-            <td><ReactSelect options={["Resource Filter", ...resourceList]} updateValue={setResourceFilter}/></td>
+            <td><ReactSelect options={["Roll Filter", ...allowableRolls]} updateValue={setRollFilter} id="RollFilter"/></td>
+            <td><ReactSelect options={["Player Filter", ...props.players]} updateValue={setPlayerFilter} id="PlayerFilter"/></td>
+            <td><ReactSelect options={["Resource Filter", ...resourceList]} updateValue={setResourceFilter} id="ResourceFilter"/></td>
           </tr>
           {/*Data rows - filtered*/}
           {/*Check for over-filter - display error after table to preserve formatting*/}
@@ -78,7 +78,7 @@ function SettlementTable(props) {
 // One section for disabled settlements, one for enabled. Otherwise identical.
 // Props needed: settlements[], reRender(), bool enabled
 function RobberTableSection(props) {
-  return props.settlements.map((settlement, index) => (<RobberTableEntry key={index} settlement={settlement} reRender={props.reRender} enabled={props.enabled}/>))
+  return props.settlements.map((settlement, index) => (<RobberTableEntry key={index} settlement={settlement} reRender={props.reRender} enabled={props.enabled} index={index}/>))
 }
 
 // Props needed: settlements[], reRender(), bool enabled
@@ -98,7 +98,7 @@ function RobberTableEntry(props) {
       <td>{props.settlement.resource}</td>
       <td>{props.settlement.type}</td>
       {/*Just use this section's enabled state to determine if the box is checked - no need to track it separately*/}
-      <td><input type="checkbox" checked={props.enabled} onChange={() => toggleEnabled()} /></td>
+      <td><input type="checkbox" checked={props.enabled} onChange={() => toggleEnabled()} id={`${props.enabled}_EnabledCheckbox${props.index}`}/></td>
     </tr>
   )
 }

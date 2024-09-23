@@ -1,5 +1,5 @@
 // Boilerplate to render a react-ified HTML select object
-// Props needed: options[], updateValue()
+// Props needed: options[], updateValue(), str id
 export default function ReactSelect(props) {
 
   // Because select only supports strings
@@ -14,7 +14,7 @@ export default function ReactSelect(props) {
   }
 
   return (
-    <select onChange={(event) => props.updateValue(getInteger(event.target.value))}>
+    <select onChange={(event) => props.updateValue(getInteger(event.target.value))} id={props.id}>
       {props.options.map((option, index) => (
         <option key={index}>
           {option}

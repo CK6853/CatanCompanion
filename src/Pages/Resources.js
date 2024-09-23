@@ -13,7 +13,7 @@ export default function Resources(props) {
         {/*Display the total of the rolled dice*/}
         <h2>{`Rolled a ${props.rolledValue}`}</h2>
         {/*Give a resource list for each player*/}
-        {props.players.map((player) => (<PlayerResources player={player} settlements={filteredSettlements}/>))}
+        {props.players.map((player) => (<PlayerResources player={player} settlements={filteredSettlements} key={player}/>))}
       </div>
       {/*Button to return home once resources are handed out*/}
       <button className="ConfirmButton" onClick={() => props.returnHome()}>Done</button>

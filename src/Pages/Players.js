@@ -41,6 +41,7 @@ function PlayerInputBlock(props) {
     <div className="InputBlock">
       {/*Input field to enter a new player to add to the list*/}
       <input
+        id="PlayerName"
         className="InputBox"
         type="text"
         /*Use state to hold value*/
