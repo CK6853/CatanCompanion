@@ -1,5 +1,7 @@
 ## Deployed [here](https://iridescent-griffin-d67dee.netlify.app/)
 
+Currently designed for use on my tablet, might make it more phone- and desktop-compatible at some point in the future.
+
 # Catan Companion
 Catan is one of the few board games I can convince my family to play, but there's one part of the game that some of them find frustrating - resource gathering. 
 
@@ -12,16 +14,35 @@ I needed to brush up on my React, so I decided to make an app to keep track of a
 ## Usage
 On starting a game, click the "Players" button. Enter the name of each person playing, and then return home. If you add a name incorrectly, click the "Remove" button next to that name.  
 
-Each time someone creates a new settlement (including during the starting phase), or upgrades a settlement to a city, click the "Settlements" button. Enter the roll number, owning player, resource type, settlement type and click Add. If you're building a settlement on a tile currently occupied by the Robber, untick "Enabled" before adding.  If you add a settlement incorrectly, click the "Remove" button next to that settlement. To upgrade a settlement to a city (or switch back if you click one by accident) use the "Switch" button. 
+![Players](docs/screenshots/Players.png)
+
+Each time someone creates a new settlement (including during the starting phase), or upgrades a settlement to a city, click the "Settlements" button. Enter the roll number, owning player, resource type, settlement type and click Add. If you're building a settlement on a tile currently occupied by the Robber, untick "Enabled" before adding.  
+
+![Add Settlement](docs/screenshots/AddSettlement.png)
+
+If you add a settlement incorrectly, click the "Remove" button next to that settlement. To upgrade a settlement to a city (or switch back if you click one by accident) use the "Switch" button. 
+
+![Remove Settlement](docs/screenshots/RemoveSettlement.png)
+
 You can filter the list of settlements using the dropdowns at the top of the table. To disable a filter, just set the dropdown back to its default value, e.g. "Roll Filter". 
 
-Once you've entered everyone's names and added any settlements or cities, you're ready to play. Whenever the dice are rolled, just click the corresponding dice on the main page. It doesn't have to be exact - the app is just checking what the total number is. So if you roll a 3 and a 5 (total 8) you could just press 4 and 4 (still totals 8). The colours of the dice also don't matter - just select one from each. 
+![Filter Settlements](docs/screenshots/FilterSettlement.png)
 
-For any roll that isn't a 7, the app will then display which cards each player needs to draw. Once finished, click "Done". 
+Once you've entered everyone's names and added any settlements or cities, you're ready to play. Whenever the dice are rolled, just click the corresponding dice on the main page. It doesn't have to be exact - the app is just checking what the total number is. So if you roll a 3 and a 5 (total 8) you could just press 4 and 4 (still totals 8). The colours of the dice also don't matter - just select one from each colour. 
 
-When a 7 is rolled, the Robber triggers and may be moved to a new tile. Any settlements with the Robber on their tile are disabled and provide no resources. When entering a 7 on the dice, you will be navigated to the Robber page. Filtering works the same as the Settlements page. Use the tickboxes to choose which settlements are disabled by the robber. Disabled settlements will be displayed at the top of the table and are unaffected by filters. Once you've finished slecting which settlements to enable/disable, click "Done". If a settlement is disabled, it will not be included in the resource draws when its number is rolled. 
+For any roll that isn't a 7, the app will then display which cards each player needs to draw. Once finished, click "Done".
+
+![Resources](docs/screenshots/Resources.png)
+
+When a 7 is rolled, the Robber triggers and may be moved to a new tile. Any settlements with the Robber on their tile are disabled and provide no resources. When entering a 7 on the dice, you will be navigated to the Robber page. Filtering works the same as the Settlements page. Use the tickboxes to choose which settlements are disabled by the robber. Disabled settlements will be displayed at the top of the table and are unaffected by filters. Once you've finished slecting which settlements to enable/disable, click "Done". 
+
+![Robber](docs/screenshots/Robber.png)
+
+If a settlement is disabled, it will not be included in the resource draws when its number is rolled. 
+
+![Resources (Disabled)](docs/screenshots/ResourcesDisabled.png)
 
 ## Other notes
-This app uses your browser's local storage. If you refresh or close the page, or possibly even when you restart your device, your data will still be there. For starting a new game, the data can be cleared on the Players and Settlements pages. If you want to completely remove the data (including the empty arrays), you will need to delete it through your browser's settings (this differs per browser, but will probably be bundled near your cookie-clearing options). 
+This app uses your browser's local storage. If you refresh or close the page, or possibly even when you restart your device, your data will still be there. For starting a new game, the data can be cleared on the Players and Settlements pages. If you want to completely remove the data (including the empty arrays), you will need to delete it through your browser's settings (this differs per browser, but will probably be bundled near your cookie-clearing options or the developer console). 
 
-Currently designed for use on my tablet, might make it phone-compatible at some point but I hate CSS. 
+![Clearing LocalStorage](docs/screenshots/ClearLocalStorage.png)
