@@ -1,5 +1,5 @@
 
 
-Screenshots for CSS
+Recover Settlement methods on page refresh
 
 Make it look nice on desktop/mobile
