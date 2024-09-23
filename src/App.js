@@ -5,6 +5,7 @@ import Players from "./Pages/Players.js"
 import Settlements from "./Pages/Settlements.js"
 import Resources from "./Pages/Resources.js"
 import Robber from "./Pages/Robber.js"
+import Settlement from './Settlement.js';
 
 function App() {
   // Set up state for active page
@@ -68,10 +69,19 @@ function getLocalStorage(getKey) {
 
     // If it already exists, use that. Otherwise, default to empty array
     if (initialValue) {
-      return initialValue
+      if (getKey === "settlementArray") {
+        return fixSettlementMethods(initialValue)
+      } else {
+        return initialValue
+      }
     } else {
       return []
     }
+}
+
+// Restore Settlement class methods when loading from localStorage
+function fixSettlementMethods(localStorageValue) {
+  return localStorageValue.map((settlement) => new Settlement(settlement.roll, settlement.player, settlement.resource, settlement.type, settlement.enabled))
 }
 
 export default App;
