@@ -12,6 +12,8 @@ In practice, this leads to the following gameplay: Someone starts their turn, an
 I needed to brush up on my React, so I decided to make an app to keep track of all that for us. 
 
 ## Usage
+![Home](docs/screenshots/Home.png)
+
 On starting a game, click the "Players" button. Enter the name of each person playing, and then return home. If you add a name incorrectly, click the "Remove" button next to that name.  
 
 ![Players](docs/screenshots/Players.png)
