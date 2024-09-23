@@ -70,6 +70,7 @@ function getLocalStorage(getKey) {
     // If it already exists, use that. Otherwise, default to empty array
     if (initialValue) {
       if (getKey === "settlementArray") {
+        // If the localStorage data in question is Settlements, re-add the class methods
         return fixSettlementMethods(initialValue)
       } else {
         return initialValue
