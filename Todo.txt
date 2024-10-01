@@ -1,3 +1,4 @@
 
+Add some kind of "Are you sure?" to clear buttons
 
 Make it look nice on desktop/mobile
