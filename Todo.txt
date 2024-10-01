@@ -1,4 +1,5 @@
 
 Add some kind of "Are you sure?" to clear buttons
+Button to clear filters
 
 Make it look nice on desktop/mobile
