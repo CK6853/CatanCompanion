@@ -36,6 +36,9 @@
   left:0;
   opacity: 0;
 }
+.DieOverlay:hover {
+  opacity: 0.1;
+}
 .DieOverlay.Selected {
   opacity: 0.3;
 }
