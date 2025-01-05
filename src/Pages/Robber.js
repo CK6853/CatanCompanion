@@ -131,5 +131,22 @@ function filterEnabledSettlements(settlementArray, rollFilter, playerFilter, res
     })
   }
 
-  return shallowCopy
+  return sortSettlements(shallowCopy)
+}
+
+// Sort the settlements so they show in a coherent order
+function sortSettlements(settlementArray) {
+  return settlementArray.sort((a, b) => {
+    // Sort roll prop first, then player...
+    for (const prop of ["roll", "player", "resource", "type"]) {
+      // If current props are equal, sort by next, etc.
+      if (a[prop] !== b[prop]) {
+        // Return 1 if a is larger, -1 if b is larger
+        return (a[prop] > b[prop]) ? 1 : -1
+      }
+    }  
+
+    // Completely equal
+    return 0
+  })
 }
