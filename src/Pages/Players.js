@@ -91,7 +91,9 @@ function PlayerEditBlock(props) {
       
       {/*Button to clear all players - only render if more than one player*/}
       {props.players.length < 2 ? (null) : (
-        <button className="ClearButton" onClick={() => clearPlayers()}>Clear All Players</button>
+        <button className="ClearButton" onClick={() => {
+          if (window.confirm('Are you sure you wish to clear all players?')) clearPlayers()
+        }}>Clear All Players</button>
       )}
     </div>
   )

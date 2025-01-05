@@ -61,7 +61,9 @@ function SettlementEditBlock(props) {
       <h2>Existing</h2>
       {/*Button to clear all settlements - only render if more than one settlement*/}
       {props.settlements.length < 2 ? (null) : (
-        <button className="ClearButton" onClick={() => clearSettlements()}>Clear All Settlements</button>
+        <button className="ClearButton" onClick={() => {
+          if (window.confirm('Are you sure you wish to clear all settlements?')) clearSettlements()
+          }}>Clear All Settlements</button>
       )}
       {/*Table of all settlements, to allow removals*/}
       <table className="SettlementsTable">
